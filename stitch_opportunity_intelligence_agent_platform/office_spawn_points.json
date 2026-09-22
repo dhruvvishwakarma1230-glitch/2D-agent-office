@@ -1,0 +1,348 @@
+{
+  "image_size_px": {
+    "width": 1310,
+    "height": 1200
+  },
+  "coordinate_origin": "top-left",
+  "anchor_definition": "Spawn coordinates are character feet/base anchors. Desk coordinates are seated character anchors.",
+  "agents": [
+    {
+      "id": 1,
+      "name": "Planner",
+      "spawn": {
+        "x": 195,
+        "y": 721
+      },
+      "desk_anchor": {
+        "x": 195,
+        "y": 642
+      },
+      "row": 1
+    },
+    {
+      "id": 2,
+      "name": "Discovery",
+      "spawn": {
+        "x": 495,
+        "y": 721
+      },
+      "desk_anchor": {
+        "x": 495,
+        "y": 642
+      },
+      "row": 1
+    },
+    {
+      "id": 3,
+      "name": "Investigator",
+      "spawn": {
+        "x": 795,
+        "y": 721
+      },
+      "desk_anchor": {
+        "x": 795,
+        "y": 642
+      },
+      "row": 1
+    },
+    {
+      "id": 4,
+      "name": "Verifier",
+      "spawn": {
+        "x": 1092,
+        "y": 721
+      },
+      "desk_anchor": {
+        "x": 1092,
+        "y": 642
+      },
+      "row": 1
+    },
+    {
+      "id": 5,
+      "name": "Match",
+      "spawn": {
+        "x": 195,
+        "y": 965
+      },
+      "desk_anchor": {
+        "x": 195,
+        "y": 884
+      },
+      "row": 2
+    },
+    {
+      "id": 6,
+      "name": "Application",
+      "spawn": {
+        "x": 495,
+        "y": 965
+      },
+      "desk_anchor": {
+        "x": 495,
+        "y": 884
+      },
+      "row": 2
+    },
+    {
+      "id": 7,
+      "name": "Outreach",
+      "spawn": {
+        "x": 795,
+        "y": 965
+      },
+      "desk_anchor": {
+        "x": 795,
+        "y": 884
+      },
+      "row": 2
+    },
+    {
+      "id": 8,
+      "name": "Monitor",
+      "spawn": {
+        "x": 1092,
+        "y": 965
+      },
+      "desk_anchor": {
+        "x": 1092,
+        "y": 884
+      },
+      "row": 2
+    }
+  ],
+  "manager": {
+    "manager_stand": [
+      640,
+      326
+    ],
+    "manager_desk_anchor": [
+      640,
+      274
+    ],
+    "manager_door": [
+      867,
+      409
+    ],
+    "scanner_approach": [
+      245,
+      426
+    ],
+    "scanner": [
+      232,
+      321
+    ]
+  },
+  "paths": {
+    "1_to_2": [
+      [
+        195,
+        721
+      ],
+      [
+        195,
+        756
+      ],
+      [
+        495,
+        756
+      ],
+      [
+        495,
+        721
+      ]
+    ],
+    "2_to_3": [
+      [
+        495,
+        721
+      ],
+      [
+        495,
+        756
+      ],
+      [
+        795,
+        756
+      ],
+      [
+        795,
+        721
+      ]
+    ],
+    "3_to_4": [
+      [
+        795,
+        721
+      ],
+      [
+        795,
+        756
+      ],
+      [
+        1092,
+        756
+      ],
+      [
+        1092,
+        721
+      ]
+    ],
+    "4_to_5": [
+      [
+        1092,
+        721
+      ],
+      [
+        1160,
+        721
+      ],
+      [
+        1160,
+        810
+      ],
+      [
+        195,
+        810
+      ],
+      [
+        195,
+        965
+      ]
+    ],
+    "5_to_6": [
+      [
+        195,
+        965
+      ],
+      [
+        195,
+        1000
+      ],
+      [
+        495,
+        1000
+      ],
+      [
+        495,
+        965
+      ]
+    ],
+    "6_to_7": [
+      [
+        495,
+        965
+      ],
+      [
+        495,
+        1000
+      ],
+      [
+        795,
+        1000
+      ],
+      [
+        795,
+        965
+      ]
+    ],
+    "7_to_8": [
+      [
+        795,
+        965
+      ],
+      [
+        795,
+        1000
+      ],
+      [
+        1092,
+        1000
+      ],
+      [
+        1092,
+        965
+      ]
+    ],
+    "8_to_manager": [
+      [
+        1092,
+        965
+      ],
+      [
+        1165,
+        965
+      ],
+      [
+        1165,
+        475
+      ],
+      [
+        900,
+        475
+      ],
+      [
+        900,
+        409
+      ],
+      [
+        867,
+        409
+      ],
+      [
+        867,
+        390
+      ],
+      [
+        640,
+        390
+      ],
+      [
+        640,
+        326
+      ]
+    ],
+    "manager_to_scanner": [
+      [
+        640,
+        326
+      ],
+      [
+        867,
+        326
+      ],
+      [
+        867,
+        409
+      ],
+      [
+        900,
+        409
+      ],
+      [
+        900,
+        455
+      ],
+      [
+        245,
+        455
+      ],
+      [
+        245,
+        426
+      ],
+      [
+        232,
+        321
+      ]
+    ]
+  },
+  "implementation_notes": [
+    "Keep the office background static and render agents as independent sprite layers.",
+    "Use bottom-center/feet anchoring for standing and walking sprites.",
+    "Do not bake agents into the background.",
+    "Use seated sprite at desk anchor; swap to standing sprite at spawn anchor before walking.",
+    "Use the supplied paths as initial navigation routes.",
+    "Add collision boxes around desks/chairs if needed."
+  ]
+}

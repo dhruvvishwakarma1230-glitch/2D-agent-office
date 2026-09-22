@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Opportunity Intelligence</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/><style>
+@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}}
+::-webkit-scrollbar{display:none;}
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+@keyframes gentleTyping {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+.typing-bounce {
+  animation: gentleTyping 0.25s infinite ease-in-out;
+}
+@keyframes laserSweep {
+  0% { top: 0%; opacity: 0.9; }
+  50% { top: 88%; opacity: 1; }
+  100% { top: 0%; opacity: 0.9; }
+}
+.laser-beam {
+  animation: laserSweep 1.1s infinite ease-in-out;
+}
+@keyframes dispatchPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+.dispatch-glow {
+  animation: dispatchPulse 1s infinite ease-in-out;
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary":"#ffffff","on-tertiary-fixed-variant":"#003ea8","on-error-container":"#93000a","error-container":"#ffdad6","primary-container":"#1e40af","surface-container-highest":"#d3e4fe","on-surface":"#0b1c30","surface-container-low":"#eff4ff","surface-dim":"#cbdbf5","surface-container-high":"#dce9ff","on-background":"#0b1c30","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface-variant":"#d3e4fe","secondary-fixed":"#dae2fd","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","on-secondary":"#ffffff","tertiary-container":"#0042b2","tertiary-fixed":"#dbe1ff","on-primary-fixed":"#001453","on-secondary-fixed":"#131b2e","primary-fixed":"#dde1ff","surface-bright":"#f8f9ff","inverse-surface":"#213145","on-tertiary":"#ffffff","surface-tint":"#3755c3","inverse-primary":"#b8c4ff","on-secondary-fixed-variant":"#3f465c","tertiary-fixed-dim":"#b4c5ff","surface":"#f8f9ff","on-tertiary-container":"#a4b9ff","tertiary":"#002e81","on-primary-container":"#a8b8ff","on-primary-fixed-variant":"#173bab","primary-fixed-dim":"#b8c4ff","secondary-container":"#dae2fd","outline":"#757684","surface-container":"#e5eeff","outline-variant":"#c4c5d5","background":"#f8f9ff","primary":"#00288e","surface-container-lowest":"#ffffff","on-tertiary-fixed":"#00174b","on-surface-variant":"#444653","on-secondary-container":"#5c647a","error":"#ba1a1a"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-sm":"0.5rem","margin-lg":"2.5rem","gutter-lg":"1.5rem","margin-sm":"1rem","space-lg":"1.25rem","gutter":"1rem","space-xs":"0.25rem","space-md":"0.75rem","margin":"1.5rem","gutter-sm":"0.75rem","space-xl":"2rem"},fontFamily:{"body-lg":["Inter"],"headline-xl":["Inter"],"headline-md":["Inter"],"label-md":["JetBrains Mono"],"headline-lg":["Inter"],"headline-lg-mobile":["Inter"],"headline-xl-mobile":["Inter"],"headline-sm":["Inter"],"label-xs":["JetBrains Mono"],"body-sm":["Inter"],"label-sm":["JetBrains Mono"],"body-md":["Inter"]}}}}</script></head><body class="bg-[#F6F4EE] font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary/20">
+<!-- MINIMAL TOP NAVIGATION (No AI SaaS Badges, No Toggle Tabs) -->
+<header class="w-full bg-[#FFFFFF]/90 backdrop-blur-md border-b border-[#E6DEC8] z-30 sticky top-0">
+<div class="max-w-[1400px] mx-auto h-14 px-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+</div>
+<span class="font-headline-sm font-semibold tracking-tight text-[#0B1C30] text-[15px]">Opportunity Intelligence</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2.5 pl-3 border-l border-outline-variant/40">
+<div class="w-8 h-8 rounded-full bg-[#203A43] text-white flex items-center justify-center font-medium text-xs shadow-xs">
+          AS
+        </div>
+<div class="hidden sm:flex flex-col">
+<span class="text-[12px] font-semibold leading-tight text-[#0B1C30]">Aarav Sharma</span>
+<span class="text-[10px] text-on-surface-variant font-label-xs leading-none">B.Tech / AI Research</span>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors ml-1" title="Account Settings">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full flex flex-col items-center justify-start p-2 sm:p-4 md:p-6 overflow-x-hidden">
+<!-- VIEW 1: DOMINANT PIXEL OFFICE CANVAS -->
+<div class="w-full max-w-[1100px] flex flex-col items-center" id="office-view-container">
+<!-- INTEGRATED SEARCH BAR DIRECTLY ABOVE MANAGER'S SUITE (Visual Task Funnel) -->
+<div class="w-full max-w-[620px] mb-4 z-20">
+<div class="relative flex items-center bg-white/95 rounded-2xl shadow-lg border border-[#D9CEBA] p-1.5 focus-within:ring-2 focus-within:ring-primary/30 transition-all">
+<div class="pl-3.5 pr-2 text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined text-[20px] text-primary">search</span>
+</div>
+<input class="w-full bg-transparent border-none text-[#0B1C30] placeholder:text-on-surface-variant/70 font-body-md text-[14px] focus:outline-none focus:ring-0 py-2" id="search-input" placeholder="What research opportunity or fellowship shall we investigate?" type="text" value="Find AI research internships in India"/>
+<button class="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-primary-container text-white rounded-xl font-medium text-[13px] shadow transition-colors shrink-0" id="btn-submit-task">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+<span id="btn-submit-label">Send Task</span>
+</button>
+</div>
+<!-- Subtle sample quick-actions -->
+<div class="flex items-center justify-center gap-2 mt-2">
+<span class="text-[11px] font-label-xs text-on-surface-variant">Presets:</span>
+<button class="quick-chip text-[11px] font-label-xs px-2.5 py-0.5 rounded-full bg-white/70 hover:bg-white text-on-surface border border-[#E0D7C6] transition-colors" data-task="Find AI research internships in India">AI Research</button>
+<button class="quick-chip text-[11px] font-label-xs px-2.5 py-0.5 rounded-full bg-white/70 hover:bg-white text-on-surface border border-[#E0D7C6] transition-colors" data-task="IISc &amp; IIT Deep Learning Fellowships 2026">IISc / IIT</button>
+<button class="quick-chip text-[11px] font-label-xs px-2.5 py-0.5 rounded-full bg-white/70 hover:bg-white text-on-surface border border-[#E0D7C6] transition-colors" data-task="Microsoft Research India Undergraduate Residency">MSR Residency</button>
+</div>
+</div>
+<!-- PIXEL ART OFFICE VIEWPORT (Matches https://lh3.googleusercontent.com/aida-public/AB6AXuAJP4iKiOn2g7atq5UuVx4S64QrGV1NBYfTCDZUCSdsC82jBGhBtfdL2MNdd2FUuzfHeix6S6uuQeTnL_8Qbikc7NhE6Oy30LSDGi1kAC5cXrKcq_o9P6TySmoIgxnwph2w_mFBHKoQ3FUf7M5bA-DakIIWq9qPgTkeeD_CFhy9O6HH_SSlJNFTiAAerE0clN9thgxqi4Lgx8KXdcAvWDSS-4ECW2PwADnQg-QN4KxlCgBMRQ4G2CFsXPVv1q3GjHC8KA) -->
+<div class="relative w-full overflow-x-auto flex justify-center pb-8">
+<div class="relative w-[1000px] h-[916px] shrink-0 shadow-2xl rounded-2xl overflow-hidden pixelated border-2 border-[#D5CABB]" id="office-board" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQqx6CCTYJRFIdgtet53Zqr8A0LSCcOq_0ZEBttnBiT76A5vmm0pZUNDylZ3JtyrxGcJJiRfFoW_PnHKCUhpJFcIJk0wMiqm-9FwxdanfRWhOlMXcPBf5hcH7ZQuUMgnxNY7phgLg-5UnBPXU-yBsajm6Q_ib_nj1noS57QLd1ZsTdLG8QuNG8FGFBdraj2mJFqChH04bdsxU_1aByJb6DshD6X1bWYcqBdWqigyuaLP00vchAyKTU'); background-size: 1000px 916px; background-repeat: no-repeat;">
+<!-- HARDWARE SCANNER / PRINTER STATION (Top Left) -->
+<div class="absolute top-[205px] left-[145px] w-[75px] h-[100px] cursor-pointer group z-20" id="scanner-unit" title="Digitizer / Document Scanner">
+<div class="relative w-full h-full">
+<!-- Glowing Laser Beam Animation -->
+<div class="hidden absolute left-1 right-1 h-1.5 bg-[#00F0FF] shadow-[0_0_12px_#00F0FF] rounded-full z-30 laser-beam" id="scanner-laser-bar"></div>
+<!-- Glass Bed Scanner Light -->
+<div class="hidden absolute inset-0 bg-[#00F0FF]/20 rounded-md pointer-events-none transition-opacity" id="scanner-laser-bed"></div>
+</div>
+</div>
+<!-- TOP-CENTER MANAGER OFFICE SUITE -->
+<div class="absolute top-[80px] left-[400px] w-[200px] h-[180px] z-20 group" id="manager-suite">
+<!-- Dynamic Task Target Pulser -->
+<div class="hidden absolute top-[110px] left-[85px] w-8 h-8 rounded-full border-2 border-primary dispatch-glow pointer-events-none" id="manager-pulse"></div>
+<!-- Seated Manager Animated Working Target (When active, slight bounce) -->
+<div class="absolute top-[75px] left-[80px] w-10 h-10 pointer-events-none" id="manager-active-char"></div>
+<!-- Manager Speech Bubble -->
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden transition-all" id="manager-dialog">
+<div class="relative bg-white text-[#0B1C30] px-3 py-1.5 rounded-lg border-2 border-[#1E293B] shadow-xl font-label-xs text-[10.5px] whitespace-nowrap flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-ping shrink-0"></span>
+<span class="font-bold text-primary">Manager:</span>
+<span id="manager-dialog-text">Receiving research task...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+</div>
+<!-- 8 WORKER AGENT INTERACTIVE DESK ZONES (Matching pixel seated agents in https://lh3.googleusercontent.com/aida-public/AB6AXuCl9yoyfWdSc_VPTyN50dield5mwxczW0XuHXaILdaL0XNdt-uyQ3UIFPajENtOd5X_hcTrUs72OzmbXgEAPimAZJrczP0vAyZaZjj0qJLGcBEP0Un3j9cZ4XANnBF6bvF5QaSMmaW0EDJ9C-ma8u1DHrjVhEqOK08NNe3AAkRh-bBuoB60sSpxEElN26YBMwpXZ2Bn1JpiSp-7PNI03MCIrm6ewJVfmtFy6BuL4SHn-RSqSwZ6GCFtsAIR2UzXK_bySA) -->
+<!-- Note: Background already contains seated characters. We do NOT add duplicate floating heads! -->
+<!-- Desk 1: Planner (Row 1, Desk 1: Black hair) -->
+<div class="absolute top-[425px] left-[65px] w-[175px] h-[180px] z-20 group" data-agent-id="1" id="desk-zone-1">
+<div class="absolute top-[70px] left-[60px] w-12 h-12 pointer-events-none" id="desk-bounce-1"></div>
+<div class="speech-bubble absolute -top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="speech-bubble-1">
+<div class="relative bg-white text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-lg font-label-xs text-[10px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Planner:</span>
+<span class="bubble-txt">Analyzing request...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+</div>
+<!-- Desk 2: Discovery (Row 1, Desk 2: Pink hair) -->
+<div class="absolute top-[425px] left-[295px] w-[175px] h-[180px] z-20 group" data-agent-id="2" id="desk-zone-2">
+<div class="absolute top-[70px] left-[60px] w-12 h-12 pointer-events-none" id="desk-bounce-2"></div>
+<div class="speech-bubble absolute -top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="speech-bubble-2">
+<div class="relative bg-white text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-lg font-label-xs text-[10px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Discovery:</span>
+<span class="bubble-txt">Searching listings...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+</div>
+<!-- Desk 3: Investigator (Row 1, Desk 3: Yellow/Blonde hair) -->
+<div class="absolute top-[425px] left-[530px] w-[175px] h-[180px] z-20 group" data-agent-id="3" id="desk-zone-3">
+<div class="absolute top-[70px] left-[60px] w-12 h-12 pointer-events-none" id="desk-bounce-3"></div>
+<div class="speech-bubble absolute -top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="speech-bubble-3">
+<div class="relative bg-white text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-lg font-label-xs text-[10px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Investigator:</span>
+<span class="bubble-txt">Researching labs...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+</div>
+<!-- Desk 4: Verifier (Row 1, Desk 4: White/Grey hair) -->
+<div class="absolute top-[425px] left-[760px] w-[175px] h-[180px] z-20 group" data-agent-id="4" id="desk-zone-4">
+<div class="absolute top-[70px] left-[60px] w-12 h-12 pointer-events-none" id="desk-bounce-4"></div>
+<div class="speech-bubble absolute -top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="speech-bubble-4">
+<div class="relative bg-white text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-lg font-label-xs text-[10px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Verifier:</span>
+<span class="bubble-txt">Checking official portals...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+</div>
+<!-- Desk 5: Match (Row 2, Desk 1: Light Brown hair) -->
+<div class="absolute top-[640px] left-[65px] w-[175px] h-[180px] z-20 group" data-agent-id="5" id="desk-zone-5">
+<div class="absolute top-[70px] left-[60px] w-12 h-12 pointer-events-none" id="desk-bounce-5"></div>
+<div class="speech-bubble absolute -top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="speech-bubble-5">
+<div class="relative bg-white text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-lg font-label-xs text-[10px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Match:</span>
+<span class="bubble-txt">Comparing candidate profile...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+</div>
+<!-- Desk 6: Application (Row 2, Desk 2: Dark Blue/Black hair) -->
+<div class="absolute top-[640px] left-[295px] w-[175px] h-[180px] z-20 group" data-agent-id="6" id="desk-zone-6">
+<div class="absolute top-[70px] left-[60px] w-12 h-12 pointer-events-none" id="desk-bounce-6"></div>
+<div class="speech-bubble absolute -top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="speech-bubble-6">
+<div class="relative bg-white text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-lg font-label-xs text-[10px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Application:</span>
+<span class="bubble-txt">Drafting packet...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+</div>
+<!-- Desk 7: Outreach (Row 2, Desk 3: Chestnut hair) -->
+<div class="absolute top-[640px] left-[530px] w-[175px] h-[180px] z-20 group" data-agent-id="7" id="desk-zone-7">
+<div class="absolute top-[70px] left-[60px] w-12 h-12 pointer-events-none" id="desk-bounce-7"></div>
+<div class="speech-bubble absolute -top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="speech-bubble-7">
+<div class="relative bg-white text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-lg font-label-xs text-[10px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Outreach:</span>
+<span class="bubble-txt">Finding PI contacts...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+</div>
+<!-- Desk 8: Monitor (Row 2, Desk 4: Dark Purple/Brown hair) -->
+<div class="absolute top-[640px] left-[760px] w-[175px] h-[180px] z-20 group" data-agent-id="8" id="desk-zone-8">
+<div class="absolute top-[70px] left-[60px] w-12 h-12 pointer-events-none" id="desk-bounce-8"></div>
+<div class="speech-bubble absolute -top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="speech-bubble-8">
+<div class="relative bg-white text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-lg font-label-xs text-[10px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Monitor:</span>
+<span class="bubble-txt">Synthesizing master dossier...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+</div>
+<!-- DYNAMIC SPRITE RUNNER (Clean Isolated Walking Character along corridors) -->
+<div class="hidden absolute z-40 pointer-events-none transition-all pixelated w-[36px] h-[48px]" id="office-courier">
+<div class="relative w-full h-full pixelated" id="courier-visual">
+<!-- Exact cropped sprite graphic -->
+<div class="w-full h-full pixelated" id="courier-sprite" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCIq2MyZgiGMETKz6M7GAaLB9hEJllYm9SU4akjmc0svNWvX3s7rTAlk-5Om-NbkdObUq7wRLI2OE9L4MXOf82H-12QeRGqfGnXrO5kECfU2NYbYaDpCy2Zp_PEPcb_Es1QyHtK_6W0c4oPsTEjkIc_QBdupybp5Xsz7tVjGiPSA9AGst9-qLv2WTLDcYJqGing_fCv921bVzJ84k3BI4A0a4CvlHiIs_wPi_Qmzidb6SFHRZk1OujN'); background-position: -420px -45px; background-size: 1536px 1024px;"></div>
+<!-- Physical Manila Folder in hands -->
+<div class="absolute -right-1 top-5 w-3 h-2.5 bg-[#EAB308] border border-[#854D0E] rounded-xs shadow-xs text-[7px] flex items-center justify-center font-bold">📄</div>
+</div>
+</div>
+<!-- COURIER COVER BLANK FOR STANDING AGENT (Hides desk person when they stand up & walk) -->
+<div class="hidden absolute z-15 w-[38px] h-[42px] bg-[#E8DDD0] rounded-t-md" id="desk-seat-blank"></div>
+<!-- SCANNING CONFIRMATION NOTIFICATION (At Scanner Station) -->
+<div class="hidden absolute top-[150px] left-[70px] w-[310px] bg-white/95 backdrop-blur-md rounded-xl p-4 border border-[#00F0FF] shadow-2xl z-50 animate-in fade-in zoom-in duration-200" id="scanner-done-popup">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-[#00A3C4] text-[22px]">verified</span>
+<div>
+<span class="font-headline-sm text-[13px] font-bold text-[#0B1C30] block leading-tight">Verification Complete</span>
+<span class="font-label-xs text-[10px] text-[#10B981] font-semibold">8 Opportunities Certified &amp; Digitized</span>
+</div>
+</div>
+<p class="text-[12px] text-on-surface-variant mb-3">IISc, IIT-B, IIT-D, and MSR listings verified. Stipends &amp; direct PI emails confirmed.</p>
+<button class="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-primary hover:bg-primary-container text-white rounded-lg font-medium text-[12px] shadow-sm transition-all" id="btn-view-results">
+<span>Open Verified Opportunities (8)</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- VIEW 2: MODE B VERIFIED RESULTS WORKSPACE (Seamless transition upon completion) -->
+<div class="hidden w-full max-w-[1200px] flex-col py-4" id="workspace-view-container">
+<div class="flex items-center justify-between mb-6 pb-4 border-b border-[#E6DEC8]">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+            8 Opportunities Verified
+          </span>
+<span class="text-on-surface-variant font-label-xs text-[11px]">• Query: AI research internships in India</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-[#0B1C30] tracking-tight">Verified Opportunities Matrix</h2>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-surface-container border border-outline-variant/50 rounded-lg text-on-surface font-medium text-[13px] transition-colors shadow-xs" id="btn-back-to-office">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+<span>Return to Office</span>
+</button>
+</div>
+<!-- Results Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<!-- Opportunity 1 -->
+<div class="bg-white rounded-xl p-4 border border-[#E6DEC8] shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-xs font-semibold text-[11px]">IISc Bengaluru</span>
+<span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs font-bold text-[10px]">96% Match</span>
+</div>
+<h3 class="font-headline-sm font-semibold text-[14px] text-on-surface mb-1">Deep Vision Research Intern</h3>
+<p class="text-body-sm text-[12px] text-on-surface-variant mb-3">Computational Data Sciences (CDS). Working on multimodal generative transformers.</p>
+<div class="space-y-1 font-label-xs text-[11px] text-on-surface-variant">
+<div class="flex justify-between"><span>Stipend:</span><span class="text-on-surface font-semibold">₹45,000 / mo</span></div>
+<div class="flex justify-between"><span>Deadline:</span><span class="text-[#E11D48] font-bold">April 15, 2026</span></div>
+<div class="flex justify-between"><span>Faculty PI:</span><span class="text-primary font-semibold">Prof. V. Babu</span></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-xs text-[#10B981] flex items-center gap-0.5 text-[11px]"><span class="material-symbols-outlined text-[14px]">verified</span>Verified</span>
+<button class="px-3 py-1 bg-primary text-white rounded text-label-xs text-[11px] font-semibold hover:bg-primary-container transition-colors">View Dossier</button>
+</div>
+</div>
+<!-- Opportunity 2 -->
+<div class="bg-white rounded-xl p-4 border border-[#E6DEC8] shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-xs font-semibold text-[11px]">Microsoft Research</span>
+<span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs font-bold text-[10px]">94% Match</span>
+</div>
+<h3 class="font-headline-sm font-semibold text-[14px] text-on-surface mb-1">MSR India Research Fellow</h3>
+<p class="text-body-sm text-[12px] text-on-surface-variant mb-3">Systems &amp; LLM Alignment Team. 1-2 year pre-doctoral funded research fellowship.</p>
+<div class="space-y-1 font-label-xs text-[11px] text-on-surface-variant">
+<div class="flex justify-between"><span>Stipend:</span><span class="text-on-surface font-semibold">₹75,000 / mo</span></div>
+<div class="flex justify-between"><span>Deadline:</span><span class="text-[#E11D48] font-bold">May 01, 2026</span></div>
+<div class="flex justify-between"><span>Lead Mentor:</span><span class="text-primary font-semibold">Dr. S. Sengupta</span></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-xs text-[#10B981] flex items-center gap-0.5 text-[11px]"><span class="material-symbols-outlined text-[14px]">verified</span>Verified</span>
+<button class="px-3 py-1 bg-primary text-white rounded text-label-xs text-[11px] font-semibold hover:bg-primary-container transition-colors">View Dossier</button>
+</div>
+</div>
+<!-- Opportunity 3 -->
+<div class="bg-white rounded-xl p-4 border border-[#E6DEC8] shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-xs font-semibold text-[11px]">IIT Bombay</span>
+<span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs font-bold text-[10px]">92% Match</span>
+</div>
+<h3 class="font-headline-sm font-semibold text-[14px] text-on-surface mb-1">Summer Research Fellow</h3>
+<p class="text-body-sm text-[12px] text-on-surface-variant mb-3">Center of Machine Intelligence and Data Science (C-MInDS). Reinforcement Learning focus.</p>
+<div class="space-y-1 font-label-xs text-[11px] text-on-surface-variant">
+<div class="flex justify-between"><span>Stipend:</span><span class="text-on-surface font-semibold">₹35,000 / mo</span></div>
+<div class="flex justify-between"><span>Deadline:</span><span class="text-on-surface-variant">Rolling (Apr 30)</span></div>
+<div class="flex justify-between"><span>Lab Host:</span><span class="text-primary font-semibold">C-MInDS Lab</span></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-xs text-[#10B981] flex items-center gap-0.5 text-[11px]"><span class="material-symbols-outlined text-[14px]">verified</span>Verified</span>
+<button class="px-3 py-1 bg-primary text-white rounded text-label-xs text-[11px] font-semibold hover:bg-primary-container transition-colors">View Dossier</button>
+</div>
+</div>
+<!-- Opportunity 4 -->
+<div class="bg-white rounded-xl p-4 border border-[#E6DEC8] shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-xs font-semibold text-[11px]">IIT Delhi</span>
+<span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs font-bold text-[10px]">90% Match</span>
+</div>
+<h3 class="font-headline-sm font-semibold text-[14px] text-on-surface mb-1">Yardi ScAI Research Scholar</h3>
+<p class="text-body-sm text-[12px] text-on-surface-variant mb-3">School of Artificial Intelligence. Graph Neural Networks and Neuro-Symbolic AI.</p>
+<div class="space-y-1 font-label-xs text-[11px] text-on-surface-variant">
+<div class="flex justify-between"><span>Stipend:</span><span class="text-on-surface font-semibold">₹40,000 / mo</span></div>
+<div class="flex justify-between"><span>Deadline:</span><span class="text-[#E11D48] font-bold">May 10, 2026</span></div>
+<div class="flex justify-between"><span>Coordinator:</span><span class="text-primary font-semibold">Prof. M. Gupta</span></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-xs text-[#10B981] flex items-center gap-0.5 text-[11px]"><span class="material-symbols-outlined text-[14px]">verified</span>Verified</span>
+<button class="px-3 py-1 bg-primary text-white rounded text-label-xs text-[11px] font-semibold hover:bg-primary-container transition-colors">View Dossier</button>
+</div>
+</div>
+</div>
+<!-- Summary Box -->
+<div class="p-4 bg-white rounded-xl border border-[#E6DEC8] shadow-xs flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#10B981] text-[24px]">verified_user</span>
+<div>
+<span class="font-headline-sm text-[13px] font-bold text-[#0B1C30] block">Office Workflow Completed &amp; Documented</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">All 8 positions have verified funding records, deadlines, and outreach email templates ready.</span>
+</div>
+</div>
+<button class="px-4 py-2 bg-surface-container hover:bg-surface-container-high text-primary font-medium text-[13px] rounded-lg transition-colors" id="btn-back-to-office-2">
+        Back to Office
+      </button>
+</div>
+</div>
+</main>
+<script>
+(function() {
+  let isRunning = false;
+
+  const searchInput = document.getElementById('search-input');
+  const btnSubmit = document.getElementById('btn-submit-task');
+  const btnSubmitLabel = document.getElementById('btn-submit-label');
+  const officeView = document.getElementById('office-view-container');
+  const workspaceView = document.getElementById('workspace-view-container');
+  const btnBackOffice = document.getElementById('btn-back-to-office');
+  const btnBackOffice2 = document.getElementById('btn-back-to-office-2');
+  const btnViewResults = document.getElementById('btn-view-results');
+  const courier = document.getElementById('office-courier');
+  const courierSprite = document.getElementById('courier-sprite');
+  const managerDialog = document.getElementById('manager-dialog');
+  const managerDialogText = document.getElementById('manager-dialog-text');
+  const managerPulse = document.getElementById('manager-pulse');
+  const scannerLaserBar = document.getElementById('scanner-laser-bar');
+  const scannerLaserBed = document.getElementById('scanner-laser-bed');
+  const scannerDonePopup = document.getElementById('scanner-done-popup');
+  const deskSeatBlank = document.getElementById('desk-seat-blank');
+
+  // Quick preset chips
+  document.querySelectorAll('.quick-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      searchInput.value = chip.dataset.task;
+    });
+  });
+
+  // Coordinates of walkable floor paths (aisles and desks)
+  // Desk center positions:
+  const deskCoords = {
+    1: { x: 125, y: 530, standX: 130, standY: 575 },
+    2: { x: 355, y: 530, standX: 360, standY: 575 },
+    3: { x: 590, y: 530, standX: 595, standY: 575 },
+    4: { x: 820, y: 530, standX: 825, standY: 575 },
+    5: { x: 125, y: 745, standX: 130, standY: 790 },
+    6: { x: 355, y: 745, standX: 360, standY: 790 },
+    7: { x: 590, y: 745, standX: 595, standY: 790 },
+    8: { x: 820, y: 745, standX: 825, standY: 790 },
+    manager: { x: 485, y: 235 },
+    scanner: { x: 185, y: 240 }
+  };
+
+  const agentSteps = [
+    { id: 1, name: 'Planner', text: 'Analyzing query & requirements...' },
+    { id: 2, name: 'Discovery', text: 'Searching 42 research portals...' },
+    { id: 3, name: 'Investigator', text: 'Investigating faculty & labs...' },
+    { id: 4, name: 'Verifier', text: 'Checking official .ac.in portals...' },
+    { id: 5, name: 'Match', text: 'Matching skills & coursework...' },
+    { id: 6, name: 'Application', text: 'Compiling prerequisite checklist...' },
+    { id: 7, name: 'Outreach', text: 'Finding direct PI email addresses...' },
+    { id: 8, name: 'Monitor', text: 'Synthesizing master dossier...' }
+  ];
+
+  // Spritesheet row offsets for characters
+  const spriteYOffsets = {
+    1: -45,   // Planner
+    2: -150,  // Discovery
+    3: -254,  // Investigator
+    4: -358,  // Verifier
+    5: -462,  // Match
+    6: -566,  // Application
+    7: -670,  // Outreach
+    8: -774,  // Monitor
+    manager: -878 // Manager
+  };
+
+  function setCourierFrame(agentKey, dir = 'right') {
+    const y = spriteYOffsets[agentKey] || -45;
+    if (dir === 'left') {
+      courierSprite.style.backgroundPosition = `-420px ${y}px`;
+      courierSprite.style.transform = 'scaleX(-1)';
+    } else if (dir === 'up' || dir === 'down') {
+      courierSprite.style.backgroundPosition = `-475px ${y}px`;
+      courierSprite.style.transform = 'scaleX(1)';
+    } else {
+      courierSprite.style.backgroundPosition = `-420px ${y}px`;
+      courierSprite.style.transform = 'scaleX(1)';
+    }
+  }
+
+  function delay(ms) {
+    return new Promise(r => setTimeout(r, ms));
+  }
+
+  // Smooth corridor traversal adhering to walkable floor (no clipping into desks)
+  async function walkAisle(fromX, fromY, toX, toY, agentKey) {
+    courier.style.transition = 'none';
+    courier.style.left = `${fromX}px`;
+    courier.style.top = `${fromY}px`;
+    setCourierFrame(agentKey, toX >= fromX ? 'right' : 'left');
+    courier.classList.remove('hidden');
+    await delay(30);
+
+    // If moving within same row horizontally:
+    if (Math.abs(fromY - toY) < 30) {
+      courier.style.transition = 'left 700ms linear, top 700ms linear';
+      courier.style.left = `${toX}px`;
+      courier.style.top = `${toY}px`;
+      await delay(720);
+    } else {
+      // Step into middle aisle corridor
+      const intermediateY = fromY > toY ? 590 : 610;
+      courier.style.transition = 'top 300ms linear';
+      courier.style.top = `${intermediateY}px`;
+      setCourierFrame(agentKey, 'down');
+      await delay(320);
+
+      courier.style.transition = 'left 500ms linear';
+      setCourierFrame(agentKey, toX >= fromX ? 'right' : 'left');
+      courier.style.left = `${toX}px`;
+      await delay(520);
+
+      courier.style.transition = 'top 300ms linear';
+      setCourierFrame(agentKey, 'up');
+      courier.style.top = `${toY}px`;
+      await delay(320);
+    }
+
+    courier.classList.add('hidden');
+  }
+
+  async function startWorkflow() {
+    if (isRunning) return;
+    isRunning = true;
+    btnSubmit.disabled = true;
+    btnSubmitLabel.innerText = 'Running...';
+    scannerDonePopup.classList.add('hidden');
+
+    // 1. Task enters the Manager's glass office suite directly below search bar
+    managerPulse.classList.remove('hidden');
+    managerDialog.classList.remove('hidden');
+    managerDialogText.innerText = "Task received. Initiating research workflow...";
+    await delay(1200);
+
+    // Manager assigns to Planner (Desk 1)
+    managerDialogText.innerText = "Assigning initial search parameters to Planner...";
+    await delay(800);
+    managerPulse.classList.add('hidden');
+    managerDialog.classList.add('hidden');
+
+    // Courier walks from manager doorway down to Desk 1
+    courier.style.transition = 'none';
+    courier.style.left = '485px';
+    courier.style.top = '250px';
+    setCourierFrame('manager', 'down');
+    courier.classList.remove('hidden');
+    await delay(30);
+
+    courier.style.transition = 'top 600ms linear';
+    courier.style.top = '580px';
+    await delay(620);
+
+    setCourierFrame('manager', 'left');
+    courier.style.transition = 'left 600ms linear';
+    courier.style.left = `${deskCoords[1].standX}px`;
+    await delay(620);
+    courier.classList.add('hidden');
+
+    // Step through the 8 desks sequentially
+    for (let i = 0; i < agentSteps.length; i++) {
+      const cur = agentSteps[i];
+      const bubble = document.getElementById(`speech-bubble-${cur.id}`);
+      const bubbleTxt = bubble.querySelector('.bubble-txt');
+      const deskZone = document.getElementById(`desk-zone-${cur.id}`);
+
+      // Agent is actively working: speech bubble appears above character
+      bubbleTxt.innerText = cur.text;
+      bubble.classList.remove('hidden');
+      deskZone.classList.add('typing-bounce');
+      await delay(1300);
+
+      // Finish step
+      deskZone.classList.remove('typing-bounce');
+      bubbleTxt.innerText = `✓ Done`;
+      await delay(400);
+      bubble.classList.add('hidden');
+
+      // Next handoff
+      if (i < agentSteps.length - 1) {
+        const next = agentSteps[i + 1];
+        await walkAisle(
+          deskCoords[cur.id].standX, deskCoords[cur.id].standY,
+          deskCoords[next.id].standX, deskCoords[next.id].standY,
+          cur.id
+        );
+      }
+    }
+
+    // Step 8: Monitor compiles report and walks up corridor to Manager's Glass Office
+    const desk8 = deskCoords[8];
+    courier.style.transition = 'none';
+    courier.style.left = `${desk8.standX}px`;
+    courier.style.top = `${desk8.standY}px`;
+    setCourierFrame(8, 'left');
+    courier.classList.remove('hidden');
+    await delay(30);
+
+    // Walk left to center corridor
+    courier.style.transition = 'left 600ms linear';
+    courier.style.left = '485px';
+    await delay(620);
+
+    // Walk up corridor into Manager's suite
+    setCourierFrame(8, 'up');
+    courier.style.transition = 'top 750ms linear';
+    courier.style.top = '245px';
+    await delay(770);
+    courier.classList.add('hidden');
+
+    // Manager receives dossier
+    managerDialog.classList.remove('hidden');
+    managerDialogText.innerText = "Master Dossier received. Transferring to scanner unit...";
+    await delay(1200);
+
+    // Manager walks to Scanner Station on left
+    courier.style.transition = 'none';
+    courier.style.left = '485px';
+    courier.style.top = '225px';
+    setCourierFrame('manager', 'left');
+    courier.classList.remove('hidden');
+    await delay(30);
+
+    courier.style.transition = 'left 700ms linear';
+    courier.style.left = '185px';
+    await delay(720);
+    courier.classList.add('hidden');
+
+    // Hardware Scanner activates laser & bed light
+    managerDialogText.innerText = "Digitizing verified credentials & contacts...";
+    scannerLaserBar.classList.remove('hidden');
+    scannerLaserBed.classList.remove('hidden');
+    await delay(1800);
+
+    // Scanner completes
+    scannerLaserBar.classList.add('hidden');
+    scannerLaserBed.classList.add('hidden');
+    managerDialogText.innerText = "✓ 8 Opportunities Certified & Digitized!";
+    await delay(800);
+    managerDialog.classList.add('hidden');
+
+    // Show completion card
+    scannerDonePopup.classList.remove('hidden');
+
+    btnSubmit.disabled = false;
+    btnSubmitLabel.innerText = 'Send Task';
+    isRunning = false;
+  }
+
+  // Transitions
+  function showWorkspace() {
+    officeView.classList.add('hidden');
+    workspaceView.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showOffice() {
+    workspaceView.classList.add('hidden');
+    officeView.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  btnSubmit?.addEventListener('click', startWorkflow);
+  searchInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') startWorkflow();
+  });
+
+  btnViewResults?.addEventListener('click', showWorkspace);
+  btnBackOffice?.addEventListener('click', showOffice);
+  btnBackOffice2?.addEventListener('click', showOffice);
+
+  // Click on scanner station opens results if done
+  document.getElementById('scanner-unit')?.addEventListener('click', () => {
+    scannerDonePopup.classList.toggle('hidden');
+  });
+
+  // Individual desk click to preview agent status
+  document.querySelectorAll('[data-agent-id]').forEach(desk => {
+    desk.addEventListener('click', () => {
+      const id = desk.dataset.agentId;
+      const step = agentSteps.find(s => s.id == id);
+      if (step) {
+        const bubble = document.getElementById(`speech-bubble-${id}`);
+        const bubbleTxt = bubble.querySelector('.bubble-txt');
+        bubbleTxt.innerText = `${step.name} ready: ${step.text}`;
+        bubble.classList.remove('hidden');
+        setTimeout(() => bubble.classList.add('hidden'), 2200);
+      }
+    });
+  });
+
+})();
+</script>
+</body></html>

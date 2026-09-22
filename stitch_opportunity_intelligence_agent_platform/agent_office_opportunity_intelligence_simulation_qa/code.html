@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>
+@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}
+::-webkit-scrollbar{display:none;}
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+@keyframes typingJitter {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+.typing-active {
+  animation: typingJitter 0.22s infinite ease-in-out;
+}
+@keyframes laserScan {
+  0% { top: 0%; opacity: 0.9; }
+  50% { top: 92%; opacity: 1; }
+  100% { top: 0%; opacity: 0.9; }
+}
+.laser-beam {
+  animation: laserScan 1.2s infinite ease-in-out;
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary":"#ffffff","on-tertiary-fixed-variant":"#003ea8","on-error-container":"#93000a","error-container":"#ffdad6","primary-container":"#1e40af","surface-container-highest":"#d3e4fe","on-surface":"#0b1c30","surface-container-low":"#eff4ff","surface-dim":"#cbdbf5","surface-container-high":"#dce9ff","on-background":"#0b1c30","secondary-fixed-dim":"#bec6e0","secondary":"#565e74","surface-variant":"#d3e4fe","secondary-fixed":"#dae2fd","on-error":"#ffffff","inverse-on-surface":"#eaf1ff","on-secondary":"#ffffff","tertiary-container":"#0042b2","tertiary-fixed":"#dbe1ff","on-primary-fixed":"#001453","on-secondary-fixed":"#131b2e","primary-fixed":"#dde1ff","surface-bright":"#f8f9ff","inverse-surface":"#213145","on-tertiary":"#ffffff","surface-tint":"#3755c3","inverse-primary":"#b8c4ff","on-secondary-fixed-variant":"#3f465c","tertiary-fixed-dim":"#b4c5ff","surface":"#f8f9ff","on-tertiary-container":"#a4b9ff","tertiary":"#002e81","on-primary-container":"#a8b8ff","on-primary-fixed-variant":"#173bab","primary-fixed-dim":"#b8c4ff","secondary-container":"#dae2fd","outline":"#757684","surface-container":"#e5eeff","outline-variant":"#c4c5d5","background":"#f8f9ff","primary":"#00288e","surface-container-lowest":"#ffffff","on-tertiary-fixed":"#00174b","on-surface-variant":"#444653","on-secondary-container":"#5c647a","error":"#ba1a1a"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-sm":"0.5rem","margin-lg":"2.5rem","gutter-lg":"1.5rem","margin-sm":"1rem","space-lg":"1.25rem","gutter":"1rem","space-xs":"0.25rem","space-md":"0.75rem","margin":"1.5rem","gutter-sm":"0.75rem","space-xl":"2rem"},fontFamily:{"body-lg":["Inter"],"headline-xl":["Inter"],"headline-md":["Inter"],"label-md":["JetBrains Mono"],"headline-lg":["Inter"],"headline-lg-mobile":["Inter"],"headline-xl-mobile":["Inter"],"headline-sm":["Inter"],"label-xs":["JetBrains Mono"],"body-sm":["Inter"],"label-sm":["JetBrains Mono"],"body-md":["Inter"]}}}}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-outline-variant shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-margin-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><img alt="Opportunity Intelligence Logo" class="h-8 w-8 object-contain rounded-lg shadow-xs" src="https://lh3.googleusercontent.com/aida/AEtjO1Wq1nUsbaacv_y0_vWFC7i7qErkzAfY159eW1TCEn8TMH9wwS5hJFomKqYfwsP_s-n_cRtkIGs7-EqDBo7QyIltYH_74U2AVpyQQrYAZ9uV5Y6QdP5o4owFGeD7y_6XRuEl1V-oghJwTOi25lbPjYkCm6PuYR_S0SKw_bwBK6tPQ5UKdVrGEh16QFTKvuX_zNxck_vcICrFGqmm4eoIAeIQ1u6gMivRYl90aMqYT6V5ur9i7oErAYTVv7o"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight">Opportunity Intelligence</span><span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Multi-Agent Research &amp; Verification</span></div></div><div class="flex items-center bg-surface-container-low p-space-xs rounded-lg"><nav class="flex items-center gap-space-xs"><button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-lg transition-colors bg-surface-container-lowest text-on-surface font-headline-sm shadow-sm" id="nav-mode-a"><span class="material-symbols-outlined text-[16px] text-primary">smart_toy</span><span>Agent Office</span><span class="font-label-xs text-label-xs bg-secondary-container text-on-secondary-container px-space-xs py-0.5 rounded-full uppercase">Pixel Live</span></button><button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" id="nav-mode-b"><span class="material-symbols-outlined text-[16px]">radar</span><span>Opportunities Workspace</span><span class="font-label-xs text-label-xs bg-surface-container-highest text-primary px-space-xs py-0.5 rounded-full font-label-md font-semibold">8 found</span></button></nav></div><div class="flex items-center gap-space-md"><div class="relative flex items-center gap-space-xs font-body-md text-body-md text-on-surface-variant py-space-xs px-space-sm rounded-lg transition-colors cursor-pointer"><span class="material-symbols-outlined text-[18px]">visibility</span><span>Watched / Monitored</span><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span></div><div class="h-4 w-px bg-outline-variant"></div><div class="flex items-center gap-space-sm px-space-sm py-1 bg-surface-container-low rounded-full"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col pr-space-xs"><span class="font-headline-sm text-[13px] leading-snug text-on-surface">Aarav Sharma</span><span class="font-label-xs text-label-xs text-on-surface-variant">B.Tech / AI Research</span></div></div><div class="flex items-center justify-center w-9 h-9 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors cursor-pointer" title="Settings &amp; Profile"><span class="material-symbols-outlined text-[20px]">settings</span></div></div></div></header><aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-60 bg-surface-container-lowest border-r border-outline-variant z-40 flex flex-col justify-between py-space-md px-space-sm"><div class="space-y-space-md"><div class="px-space-sm"><span class="font-label-xs text-label-xs uppercase tracking-wider text-on-surface-variant font-semibold">Discovery Pipeline</span></div><nav class="space-y-space-xs"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg transition-colors bg-surface-container-high text-on-surface font-semibold" href="#"><span class="material-symbols-outlined text-[18px]">neurology</span><span class="font-body-md text-body-md">Autonomous Agents</span></a><button class="w-full flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors text-left" id="aside-workspace-btn"><span class="material-symbols-outlined text-[18px]">dataset</span><span class="font-body-md text-body-md">Opportunity Feeds</span></button><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">bookmark</span><span class="font-body-md text-body-md">Watchlist Radar</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#"><span class="material-symbols-outlined text-[18px]">verified</span><span class="font-body-md text-body-md">Sources &amp; Proof</span></a></nav></div><div class="p-space-sm rounded-lg bg-surface-container-low space-y-space-xs"><div class="flex items-center justify-between font-label-xs text-label-xs text-on-surface-variant"><span>ACTIVE LLM NODES</span><span class="font-label-md text-primary font-semibold" id="active-nodes-badge">8/8 Active</span></div><div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden"><div class="bg-primary h-full w-full rounded-full transition-all" id="active-nodes-bar"></div></div></div></aside><div class="pl-60"><main class="w-full pt-16 bg-background min-h-screen px-margin-lg py-margin"><div class="flex flex-col w-full font-body-md text-on-surface">
+<!-- View Container: Mode A (Office) vs Mode B (Workspace) -->
+<div id="view-mode-a">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md mb-space-lg">
+<div>
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-xs font-semibold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          Mode A: Spatial Agent Orchestration
+        </span>
+<span class="text-on-surface-variant font-label-xs">Autonomous Multi-Agent Simulation</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">AI Opportunity Intelligence Agency</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Live pixel visualization of 8 autonomous agents orchestrating search, verification, and profile matching in the virtual office.</p>
+</div>
+<div class="flex items-center gap-space-xs self-start lg:self-auto p-1 bg-surface-container rounded-xl">
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary font-headline-sm text-body-sm shadow-sm transition-all" id="tab-btn-office">
+<span class="material-symbols-outlined text-[18px]">domain</span>
+<span>Mode A: Pixel Office</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-body-md text-body-sm transition-all" id="tab-btn-workspace">
+<span class="material-symbols-outlined text-[18px]">table_chart</span>
+<span>Mode B: Dossier Workspace</span>
+<span class="bg-primary text-on-primary font-label-xs px-1.5 py-0.2 rounded-full font-bold">8</span>
+</button>
+</div>
+</div>
+<!-- Search & Run Control Panel -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-md">
+<div class="flex flex-col md:flex-row gap-space-sm items-stretch">
+<div class="relative flex-1 flex items-center">
+<span class="material-symbols-outlined absolute left-space-md text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-16 py-2 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-on-surface-variant" id="search-input" placeholder="Enter target role, scholarship, or fellowship query..." type="text" value="Find AI research internships in India"/>
+<span class="absolute right-space-sm px-1.5 py-0.5 bg-surface-container-high rounded text-on-surface-variant font-label-xs">⌘K</span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="flex items-center gap-space-xs px-space-md py-2 bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-body-md rounded-lg shadow transition-colors" id="btn-trigger-search">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+<span id="btn-search-text">Search &amp; Run Pipeline</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-headline-sm text-body-md rounded-lg transition-colors" id="btn-simulate">
+<span class="material-symbols-outlined text-[18px]">fast_forward</span>
+<span>Simulate Handoffs</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs mt-space-sm pt-space-xs">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase font-semibold mr-1">Sample Queries:</span>
+<button class="sample-chip px-space-sm py-0.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant text-label-xs font-label-md transition-colors" data-query="Find AI research internships in India">AI Research Internships</button>
+<button class="sample-chip px-space-sm py-0.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant text-label-xs font-label-md transition-colors" data-query="IISc / IIT Deep Learning Fellowships 2026">IISc &amp; IIT Fellowships</button>
+<button class="sample-chip px-space-sm py-0.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant text-label-xs font-label-md transition-colors" data-query="Microsoft Research India Undergraduate Residency">MSR India Residencies</button>
+<button class="sample-chip px-space-sm py-0.5 rounded-full bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant text-label-xs font-label-md transition-colors" data-query="Computer Vision &amp; Robotics Internships Bengaluru">Robotics Bengaluru</button>
+</div>
+</div>
+<!-- Agent Stepper Pipeline -->
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm mb-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-1 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 text-label-xs font-label-md" id="workflow-stepper">
+<div class="workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0" id="step-1"><span>1. Planner</span></div>
+<span class="text-outline-variant shrink-0 font-bold" id="arr-1">→</span>
+<div class="workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0" id="step-2"><span>2. Discovery</span></div>
+<span class="text-outline-variant shrink-0 font-bold" id="arr-2">→</span>
+<div class="workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0" id="step-3"><span>3. Investigator</span></div>
+<span class="text-outline-variant shrink-0 font-bold" id="arr-3">→</span>
+<div class="workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0" id="step-4"><span>4. Verifier</span></div>
+<span class="text-outline-variant shrink-0 font-bold" id="arr-4">→</span>
+<div class="workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0" id="step-5"><span>5. Match</span></div>
+<span class="text-outline-variant shrink-0 font-bold" id="arr-5">→</span>
+<div class="workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0" id="step-6"><span>6. Application</span></div>
+<span class="text-outline-variant shrink-0 font-bold" id="arr-6">→</span>
+<div class="workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0" id="step-7"><span>7. Outreach</span></div>
+<span class="text-outline-variant shrink-0 font-bold" id="arr-7">→</span>
+<div class="workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0" id="step-8"><span>8. Monitor</span></div>
+<span class="text-outline-variant shrink-0 font-bold" id="arr-8">→</span>
+<div class="workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0" id="step-manager"><span>★ Manager &amp; Scanner</span></div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-end md:self-auto">
+<span class="font-label-xs text-on-surface-variant uppercase">Speed:</span>
+<button class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-xs font-semibold" id="speed-1x">1x</button>
+<button class="px-2 py-0.5 rounded bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-xs font-semibold" id="speed-2x">2x</button>
+<button class="px-2 py-0.5 rounded bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-xs font-semibold" id="speed-instant">Skip to Scan</button>
+</div>
+</div>
+<!-- Real Pixel-Art Office Canvas Container -->
+<div class="relative w-full rounded-2xl overflow-hidden shadow-xl bg-[#F5EFE6] select-none border border-outline-variant mb-space-lg">
+<!-- Top Matrix Status Bar -->
+<div class="w-full py-2.5 px-space-md bg-[#213145] text-on-primary flex items-center justify-between">
+<div class="flex items-center gap-space-sm font-label-sm">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-[#10B981] animate-ping"></span>
+<span class="tracking-wider uppercase font-semibold text-label-xs">Autonomous Multi-Agent Floor Matrix // Node Cluster v4.2</span>
+</div>
+<div class="flex items-center gap-space-md text-label-xs opacity-80">
+<span id="fps-counter">FPS: 60</span>
+<span id="agents-active-count">State: Idle (Ready)</span>
+<span>Handoff Bus: Online</span>
+</div>
+</div>
+<!-- Scaled Canvas Viewport -->
+<div class="relative w-full overflow-x-auto bg-[#FDFBF7] flex justify-center py-4">
+<div class="relative w-[1000px] h-[916px] max-w-full shadow-2xl rounded-xl overflow-hidden pixelated border border-[#D9CEBA]" id="office-canvas" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQqx6CCTYJRFIdgtet53Zqr8A0LSCcOq_0ZEBttnBiT76A5vmm0pZUNDylZ3JtyrxGcJJiRfFoW_PnHKCUhpJFcIJk0wMiqm-9FwxdanfRWhOlMXcPBf5hcH7ZQuUMgnxNY7phgLg-5UnBPXU-yBsajm6Q_ib_nj1noS57QLd1ZsTdLG8QuNG8FGFBdraj2mJFqChH04bdsxU_1aByJb6DshD6X1bWYcqBdWqigyuaLP00vchAyKTU'); background-size: 1000px 916px; background-repeat: no-repeat;">
+<!-- HARDWARE SCANNER STATION (Left side of Glass Manager Suite) -->
+<div class="absolute top-[175px] left-[142px] w-[75px] h-[95px] cursor-pointer group z-20" id="scanner-station" title="Executive Hardware Scanner &amp; Digitization Station">
+<div class="relative w-full h-full">
+<!-- Glowing scan laser overlay -->
+<div class="hidden absolute left-1 right-1 h-1.5 bg-[#00F0FF] shadow-[0_0_12px_#00F0FF] rounded-full z-30 laser-beam" id="scanner-laser"></div>
+<!-- Glass bed reflection -->
+<div class="hidden absolute inset-0 bg-[#00F0FF]/15 rounded pointer-events-none transition-opacity" id="scanner-glow"></div>
+<!-- Tooltip -->
+<div class="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#0F172A]/90 text-white font-label-xs text-[9px] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+              Hardware Scanner Unit
+            </div>
+</div>
+</div>
+<!-- LEAD MANAGER OFFICE SUITE (Top Center) -->
+<div class="absolute top-[85px] left-[390px] w-[220px] h-[190px] z-20 group" id="manager-office" title="Lead Manager Executive Suite">
+<!-- Seated Manager Sprite Character (Facing front at executive desk) -->
+<div class="absolute top-[15px] left-[88px] w-12 h-14 z-10 flex items-center justify-center transition-transform" id="manager-seated-char">
+<div class="w-11 h-13 overflow-hidden relative" id="manager-sprite-box">
+<!-- Using Image 2 Manager Static Views (Front: Dark Hair, formal suit, red tie) -->
+<div class="pixelated" id="manager-avatar" style="width: 44px; height: 52px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBi2s2pi9QumWlwyzDWeeb8s9bHaSeDs_bWOvXmXw7DqcN6BSfao3gpryMqIcEQd0moIkBnlKHgfAA43M5PgFUGdj8rFa2GuSS24OZrk5idMQNaEICC3nbI__Z1eSl2p1SiVDtXUOldRlaHvO6hEk1uM7KJJTHKdz4cKheb3Le0kYLAbwfMXK3Ex6rskjxTw0MvtHJj7HfY85PUhcTqkglLxgCv3X21oFdG-5iJJpoOVIKg4o0r0jJ6'); background-position: -418px -872px; background-size: 1536px 1024px;"></div>
+</div>
+</div>
+<!-- Manager Speech Bubble -->
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden transition-all" id="manager-bubble">
+<div class="relative bg-[#FDFBF7] text-[#0B1C30] px-3 py-1 rounded border-2 border-[#1E293B] shadow-lg font-label-xs text-[10px] whitespace-nowrap flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-ping shrink-0"></span>
+<span class="font-bold text-primary">Lead Manager:</span>
+<span id="manager-bubble-text">Awaiting dossier from research pipeline...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<!-- Manager Station Hover Tag -->
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#0F172A]/90 text-[#38BDF8] border border-[#0284C7] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap font-label-xs text-[9px] opacity-0 group-hover:opacity-100 transition-opacity">
+            Executive Manager (Node 0x00)
+          </div>
+</div>
+<!-- 8 WORKER AGENT STATIONS (Row 1: 1-4, Row 2: 5-8) -->
+<!-- Desk 1: Planner (Row 1, Col 1) -->
+<div class="agent-desk absolute top-[430px] left-[65px] w-[175px] h-[180px] z-20 cursor-pointer group" data-agent="1" id="desk-1">
+<div class="absolute top-[72px] left-[62px] w-12 h-14 z-10 flex items-center justify-center transition-transform" id="char-desk-1">
+<!-- Back seated view from sprite sheet 2 -->
+<div class="pixelated" id="avatar-1" style="width: 44px; height: 50px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBshGZe7rYXH75z6cXqbW2jCa7_cMHZhmxon2ENnW5RgXvfy2JqlbCeZ-jsEhF2G_ph2qN9sh2QcyBYLTsJfE2bRXAsJHd6YQ_fO13Hb7LmF7crONyWiJknT6XJ_pW8IsTBTJDAkOKVyXsTnxHcMCWZwQqEwAtv_t6YJuSb5xShj4p7EhH4HueatxyESh1_mf_PMwvsft5iy_BjpsuPul3ZZc_JEDXtQa_R_ZeCSkhGVzQj6NOsnKDn'); background-position: -116px -112px; background-size: 1536px 1024px;"></div>
+</div>
+<div class="agent-bubble absolute -top-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="bubble-1">
+<div class="relative bg-[#FDFBF7] text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-md font-label-xs text-[9.5px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Planner:</span>
+<span class="bubble-msg">Analyzing request...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<div class="desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-transparent transition-all pointer-events-none" id="border-1"></div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A]/90 text-white font-label-xs text-[9px] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">
+            1. Planner (Node 0x01)
+          </div>
+</div>
+<!-- Desk 2: Discovery (Row 1, Col 2) -->
+<div class="agent-desk absolute top-[430px] left-[295px] w-[175px] h-[180px] z-20 cursor-pointer group" data-agent="2" id="desk-2">
+<div class="absolute top-[72px] left-[62px] w-12 h-14 z-10 flex items-center justify-center transition-transform" id="char-desk-2">
+<div class="pixelated" id="avatar-2" style="width: 44px; height: 50px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDKooWvrCfMbEZz_jelSUfne059T2_7RZADXVl8ocVPmGVWYbY5lb2IwVFe5UTwtYeYVF0vBf8C_IccT-KTHL_PSOYY9I6P9qfTNzGxsCzFzn82Rl-X5sZajRzQPzgSzVs2pQ097hRKgb8TyGZU5OsY_wYWRBHCIHFKVL8TNmt11BIv_BsADCswbfgC2mnRdJBpDzqXl0q1jXuf_P21e6kJS4bAhasNZOwutwOY0nM7K2BZoTtc5I5P'); background-position: -502px -112px; background-size: 1536px 1024px;"></div>
+</div>
+<div class="agent-bubble absolute -top-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="bubble-2">
+<div class="relative bg-[#FDFBF7] text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-md font-label-xs text-[9.5px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Discovery:</span>
+<span class="bubble-msg">Searching job listings...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<div class="desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-transparent transition-all pointer-events-none" id="border-2"></div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A]/90 text-white font-label-xs text-[9px] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">
+            2. Discovery (Node 0x02)
+          </div>
+</div>
+<!-- Desk 3: Investigator (Row 1, Col 3) -->
+<div class="agent-desk absolute top-[430px] left-[530px] w-[175px] h-[180px] z-20 cursor-pointer group" data-agent="3" id="desk-3">
+<div class="absolute top-[72px] left-[62px] w-12 h-14 z-10 flex items-center justify-center transition-transform" id="char-desk-3">
+<div class="pixelated" id="avatar-3" style="width: 44px; height: 50px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC02qeqvhnRY5NJr11tQExsg6NO4XEPdxyFqqWE8EoN8egfN1bVbMq6cqU4NdgKdt1V0bRbdfEXzDrlbW5SQYgMdcbHSJSVpbmrPdiGRCDmtY_EGFexUGocfQ1b3jfcVea2mLKL2Sbw8t6OEvbxDYVdQfePhl9H_U2LF8EXov6ugsJGGg032rqqYc5EvNVPDYKt2mLOdUae1638X5jwDwtvkCtYlqBpLFLm53u-qeV92zBOqAnZM24N'); background-position: -886px -112px; background-size: 1536px 1024px;"></div>
+</div>
+<div class="agent-bubble absolute -top-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="bubble-3">
+<div class="relative bg-[#FDFBF7] text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-md font-label-xs text-[9.5px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Investigator:</span>
+<span class="bubble-msg">Researching IIT/MSR labs...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<div class="desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-transparent transition-all pointer-events-none" id="border-3"></div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A]/90 text-white font-label-xs text-[9px] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">
+            3. Investigator (Node 0x03)
+          </div>
+</div>
+<!-- Desk 4: Verifier (Row 1, Col 4) -->
+<div class="agent-desk absolute top-[430px] left-[760px] w-[175px] h-[180px] z-20 cursor-pointer group" data-agent="4" id="desk-4">
+<div class="absolute top-[72px] left-[62px] w-12 h-14 z-10 flex items-center justify-center transition-transform" id="char-desk-4">
+<div class="pixelated" id="avatar-4" style="width: 44px; height: 50px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDisAeIXDGxXN-ovjUXOyVARYxr0qMqBolSS2AvivRpARU-ZmvEA1uzNGhAhmO1rq4rvCqkyfHrczrJ912twIycXOFkH2-FxHgsktpJa0cFrZC8kshUl6Cd1hVSeVlLFgazziIpI4BE1W3FiOB-jwTmi_FN0vdyTSxZqVlhob0qO-x4KtugZoA6bh17PYnC5yruV6NqmPYI_FPZa9w7e4l85YVDYShKesxuKG1SlvMp8p_MEKVz55EQ'); background-position: -1274px -112px; background-size: 1536px 1024px;"></div>
+</div>
+<div class="agent-bubble absolute -top-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="bubble-4">
+<div class="relative bg-[#FDFBF7] text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-md font-label-xs text-[9.5px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Verifier:</span>
+<span class="bubble-msg">Cross-checking deadlines...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<div class="desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-transparent transition-all pointer-events-none" id="border-4"></div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A]/90 text-white font-label-xs text-[9px] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">
+            4. Verifier (Node 0x04)
+          </div>
+</div>
+<!-- Desk 5: Match (Row 2, Col 1) -->
+<div class="agent-desk absolute top-[640px] left-[65px] w-[175px] h-[180px] z-20 cursor-pointer group" data-agent="5" id="desk-5">
+<div class="absolute top-[72px] left-[62px] w-12 h-14 z-10 flex items-center justify-center transition-transform" id="char-desk-5">
+<div class="pixelated" id="avatar-5" style="width: 44px; height: 50px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD0HH1_uYHRLQ_G3VpgPocZ9yNY8FEuPGokFi0K7Isg2slGUGZ4lIwlE485fT5Wc0MnIU-vMjVsrtu29DuD7BAitdaCSDZ6pAVrD8RuWl1gMe-x8VgJchpBYWZXy3D2Bc57BDq4GzcemLU2d0HMFfxEYNv6Qg90tmCNdlTqk0bDlMmohDz4NX8N_MZ9XgbyRIYAjT2U--PYWXmpc6s4j8rUwZtHnu8mEGPHt2iX9G_9HtbyN4_m8ceQ'); background-position: -116px -505px; background-size: 1536px 1024px;"></div>
+</div>
+<div class="agent-bubble absolute -top-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="bubble-5">
+<div class="relative bg-[#FDFBF7] text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-md font-label-xs text-[9.5px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Match:</span>
+<span class="bubble-msg">Comparing your profile...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<div class="desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-transparent transition-all pointer-events-none" id="border-5"></div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A]/90 text-white font-label-xs text-[9px] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">
+            5. Match (Node 0x05)
+          </div>
+</div>
+<!-- Desk 6: Application (Row 2, Col 2) -->
+<div class="agent-desk absolute top-[640px] left-[295px] w-[175px] h-[180px] z-20 cursor-pointer group" data-agent="6" id="desk-6">
+<div class="absolute top-[72px] left-[62px] w-12 h-14 z-10 flex items-center justify-center transition-transform" id="char-desk-6">
+<div class="pixelated" id="avatar-6" style="width: 44px; height: 50px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCdjeqytzOrSrEpdu3Zf_7TC8J10_B5unv2d4REHk9FtonXbHrs4rpJu52L00rEr7nelVqH9xNVdVfE9ij5hIUVSrzY5X9Da0OljoftyHoQuMfuVfAPgctLaa6nLgJw_tFKDv3_EePnBtNsXHX6epePNx3XGrkL8aK_g6FhyzG39PTesY7l6QHApmtLcpzA0M86-epmh-jb7tY8Yu0-2yBe2umIMDMboCkWp19BVtTXx4wiNy6DdVhn'); background-position: -502px -505px; background-size: 1536px 1024px;"></div>
+</div>
+<div class="agent-bubble absolute -top-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="bubble-6">
+<div class="relative bg-[#FDFBF7] text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-md font-label-xs text-[9.5px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Application:</span>
+<span class="bubble-msg">Preparing application...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<div class="desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-transparent transition-all pointer-events-none" id="border-6"></div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A]/90 text-white font-label-xs text-[9px] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">
+            6. Application (Node 0x06)
+          </div>
+</div>
+<!-- Desk 7: Outreach (Row 2, Col 3) -->
+<div class="agent-desk absolute top-[640px] left-[530px] w-[175px] h-[180px] z-20 cursor-pointer group" data-agent="7" id="desk-7">
+<div class="absolute top-[72px] left-[62px] w-12 h-14 z-10 flex items-center justify-center transition-transform" id="char-desk-7">
+<div class="pixelated" id="avatar-7" style="width: 44px; height: 50px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDAAjDm1sM41uABg5DmloILD6E95DPaZqWaikATEaeEroZ6jgj14J58QT_7GeTthoqvwJcrE01jb3wQct4YWn3GROgJ7bz3_0Gf-xdDV8s68Cr9K0RO2lbo1kjB74l_uTlggt0_o2Op9Q0N0P7TOEBT_EjUu-34ZR5NoLbXfuOElv94NouCnHFntLZjIketxvtGyJT_pJG0TY3qLp86rZR0QacWpmNaMjCgTmjit5ZpW79-hLLvy7TF'); background-position: -886px -505px; background-size: 1536px 1024px;"></div>
+</div>
+<div class="agent-bubble absolute -top-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="bubble-7">
+<div class="relative bg-[#FDFBF7] text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-md font-label-xs text-[9.5px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Outreach:</span>
+<span class="bubble-msg">Finding relevant contacts...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<div class="desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-transparent transition-all pointer-events-none" id="border-7"></div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A]/90 text-white font-label-xs text-[9px] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">
+            7. Outreach (Node 0x07)
+          </div>
+</div>
+<!-- Desk 8: Monitor (Row 2, Col 4) -->
+<div class="agent-desk absolute top-[640px] left-[760px] w-[175px] h-[180px] z-20 cursor-pointer group" data-agent="8" id="desk-8">
+<div class="absolute top-[72px] left-[62px] w-12 h-14 z-10 flex items-center justify-center transition-transform" id="char-desk-8">
+<div class="pixelated" id="avatar-8" style="width: 44px; height: 50px; background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB2ycyeGL74MDXRG_taWsW95YkRJCDxhiVRVeJopVrXrCX-YP77J-Q6fCHH-A5rZvtKNSSU6vuiM8WPGBFkw7WsIWBCDc7pRV1ZJsekN5d0MOGBoaUu0OtUxoXyzOYW0JOm4pexMnGHVJH7T7WTefZhnkIltFuSQhpjNeTIimWcwhmmn-R13y5lQBeQ_Dkzc6L26iTWjGKM1CxhzdxvTwVJNnM1QsSwvoqh5L1s-KWxiv6rcMnjlHNT'); background-position: -1274px -505px; background-size: 1536px 1024px;"></div>
+</div>
+<div class="agent-bubble absolute -top-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none hidden" id="bubble-8">
+<div class="relative bg-[#FDFBF7] text-[#0B1C30] px-2.5 py-1 rounded border-2 border-[#1E293B] shadow-md font-label-xs text-[9.5px] whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-bold text-primary">Monitor:</span>
+<span class="bubble-msg">Checking opportunity status...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<div class="desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-transparent transition-all pointer-events-none" id="border-8"></div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A]/90 text-white font-label-xs text-[9px] px-2 py-0.5 rounded shadow pointer-events-none whitespace-nowrap">
+            8. Monitor (Node 0x08)
+          </div>
+</div>
+<!-- DYNAMIC WALKING SPRITE RUNNER (Asset from https://lh3.googleusercontent.com/aida-public/AB6AXuCVX4Df_hMcntbohijxxSz0Ums-T29Fh4qf5RGaEg3a0PsRE0LzU6DE1qCigcHBzQQNoUqE3JBZfmrAvW-0dENOsfpSQYttak5rGNwiWiKHsxQhXkjsY4lu9nGjRbeQiwqg-9HemYiqUdWbuvHWlzc7a8nM_uD_IlJGY-YARUo8jrta0yFim4OghNGYc1EKyPlB6x8UGc82JSTxd1WPVgKt-H4NylvzdnkYPjNcHWjgN0TVWmC4Sv0F and https://lh3.googleusercontent.com/aida-public/AB6AXuCDTZZ94XYAVmwfkjS7aTob4hKM786G3V7B45Gje89vFmRnRsvprjJTLg5ob68_yoDtwAVUAh0dVwMg8k1ZUdKJQ6kEHYLX6RXijN5v1z2HxbeZn9k3AqX2GO2CleqH0AHcjSbZpqd1ItZQOVVUI-ec3W5caE0-oVYLeyVURQjZMWrjaxFUSeLSMMy4heSdnGEsZ92Tu_AG3O1Q2ZpO7tf3_eSlEtW5XlFf9JfK37APy4ZwwTt6dKw8) -->
+<div class="hidden absolute z-40 pointer-events-none transition-all pixelated" id="dynamic-walker" style="width: 44px; height: 54px;">
+<!-- Sprite Inner Element that dynamically switches hair color & frame direction -->
+<div class="relative w-full h-full pixelated" id="walker-inner">
+<!-- Dynamic Sprite Graphic -->
+<div class="w-full h-full pixelated" id="walker-sprite-img" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCIq2MyZgiGMETKz6M7GAaLB9hEJllYm9SU4akjmc0svNWvX3s7rTAlk-5Om-NbkdObUq7wRLI2OE9L4MXOf82H-12QeRGqfGnXrO5kECfU2NYbYaDpCy2Zp_PEPcb_Es1QyHtK_6W0c4oPsTEjkIc_QBdupybp5Xsz7tVjGiPSA9AGst9-qLv2WTLDcYJqGing_fCv921bVzJ84k3BI4A0a4CvlHiIs_wPi_Qmzidb6SFHRZk1OujN'); background-position: 0px 0px; background-size: 1536px 1024px;"></div>
+<!-- Physical Dossier Manila Folder attached to courier's hand -->
+<div class="absolute -right-1 top-6 w-3.5 h-3 bg-[#EAB308] border border-[#78350F] rounded-xs shadow-xs text-[6px] flex items-center justify-center font-bold text-[#78350F]">📄</div>
+</div>
+</div>
+<!-- HIGH-FIDELITY HARDWARE DIGITIZATION OVERLAY (PRD Scanner Complete Card) -->
+<div class="hidden absolute top-[140px] left-[70px] w-[320px] bg-surface-container-lowest/95 backdrop-blur-md rounded-xl p-space-md border-2 border-[#00F0FF] shadow-2xl z-50 animate-in fade-in zoom-in duration-300" id="scan-complete-card">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#00F0FF] text-[22px]">document_scanner</span>
+<div>
+<span class="font-headline-sm text-[13px] font-bold text-on-surface block leading-tight">SCANNING COMPLETE (100%)</span>
+<span class="font-label-xs text-[10px] text-[#10B981] font-semibold">8 Research Portals Digitized</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface text-label-xs" id="btn-close-scan-card">✕</button>
+</div>
+<div class="space-y-1.5 py-1.5 border-y border-surface-container-high font-label-xs text-[10px]">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span>Primary Verified Sources:</span>
+<span class="text-primary font-bold">IISc, IIT-B, IIT-D, MSR</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span>Stipend Verification:</span>
+<span class="text-[#10B981] font-bold">₹40,000 - ₹75,000/mo confirmed</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span>Next Action:</span>
+<span class="text-[#2563EB] font-bold">Ready for Mode B Workspace</span>
+</div>
+</div>
+<div class="mt-2.5 pt-1">
+<button class="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-primary hover:bg-primary-container text-on-primary rounded-lg font-headline-sm text-[12px] shadow-sm transition-all" id="btn-goto-workspace-from-scan">
+<span>Inspect in Opportunities Workspace (Mode B)</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Real-Time Trace Console & Verification Engine Panels -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm border-b border-surface-container-high">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">terminal</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Agent State Machine &amp; Execution Trace</h2>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md" id="trace-state-tag">STANDBY</span>
+<button class="text-on-surface-variant hover:text-on-surface text-label-xs font-label-md" id="btn-clear-logs">Clear</button>
+</div>
+</div>
+<div class="h-60 overflow-y-auto space-y-2 bg-[#0B132B] p-space-md rounded-lg font-label-xs text-label-xs text-[#E2E8F0] select-text" id="console-drawer">
+<div class="text-[#38BDF8]">[SYSTEM] Multi-Agent Runtime Initialized. 8 Worker Agents + 1 Executive Manager standing by.</div>
+<div class="text-[#94A3B8]">[IDLE] SerpApi Crawler, Lab Profile Graph, and Verification Scanner online.</div>
+</div>
+</div>
+<!-- Verification Engine Stats -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs pb-space-sm mb-space-sm border-b border-surface-container-high">
+<span class="material-symbols-outlined text-primary text-[20px]">analytics</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Verification Engine</h2>
+</div>
+<div class="space-y-space-md">
+<div>
+<div class="flex justify-between font-label-xs text-label-xs mb-1">
+<span class="text-on-surface-variant">SERP QUERY COVERAGE</span>
+<span class="font-bold text-primary" id="stat-query-pct">Ready for Query</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="w-0 h-full bg-primary rounded-full transition-all duration-500" id="bar-query"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-xs text-label-xs mb-1">
+<span class="text-on-surface-variant">DEADLINE CROSS-VERIFICATION</span>
+<span class="font-bold text-[#10B981]" id="stat-deadline-pct">Portal Standby</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="w-0 h-full bg-[#10B981] rounded-full transition-all duration-500" id="bar-deadline"></div>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-xs text-label-xs uppercase tracking-wider text-on-surface-variant font-semibold block mb-1">Active Pipeline Summary</span>
+<div class="flex items-center justify-between text-body-sm font-body-sm py-0.5">
+<span class="text-on-surface-variant">Profile Targeted</span>
+<span class="font-semibold text-on-surface">Aarav Sharma (B.Tech AI)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm py-0.5">
+<span class="text-on-surface-variant">Target Geographies</span>
+<span class="font-semibold text-on-surface">India (Bengaluru, Hyd, Delhi)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm py-0.5">
+<span class="text-on-surface-variant">Dossier State</span>
+<span class="font-bold text-primary" id="dossier-state-label">Unprocessed</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-md mt-space-sm border-t border-surface-container-high">
+<button class="w-full flex items-center justify-center gap-space-xs py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-body-md transition-all shadow" id="btn-open-workspace-summary">
+<span>Open Verified Workspace (Mode B)</span>
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Mode B: Dossier Opportunities Workspace (Integrated In-Page Tab) -->
+<div class="hidden" id="view-mode-b">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md mb-space-lg">
+<div>
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs font-semibold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+          Mode B: Verified Dossier Workspace
+        </span>
+<span class="text-on-surface-variant font-label-xs">Executive Manager Certified (8 Matches)</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Opportunities Workspace &amp; Evidence Matrix</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Synthesized research output delivered by the 8-agent pipeline and hardware scanner station.</p>
+</div>
+<div class="flex items-center gap-space-xs self-start lg:self-auto p-1 bg-surface-container rounded-xl">
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-body-md text-body-sm transition-all" id="tab-btn-back-office">
+<span class="material-symbols-outlined text-[18px]">domain</span>
+<span>Mode A: Pixel Office</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-lowest text-primary font-headline-sm text-body-sm shadow-sm transition-all" id="tab-btn-workspace-active">
+<span class="material-symbols-outlined text-[18px]">table_chart</span>
+<span>Mode B: Dossier Workspace</span>
+<span class="bg-primary text-on-primary font-label-xs px-1.5 py-0.2 rounded-full font-bold">8</span>
+</button>
+</div>
+</div>
+<!-- Verified Dossier Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-xs font-bold">IISc Bengaluru</span>
+<span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs font-bold">96% Match</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-1">Deep Vision Research Intern</h3>
+<p class="text-body-sm text-on-surface-variant mb-3">Computational Data Sciences (CDS). Working on multimodal generative transformers.</p>
+<div class="space-y-1 font-label-xs text-[11px] text-on-surface-variant">
+<div class="flex justify-between"><span>Stipend:</span><span class="text-on-surface font-semibold">₹45,000 / mo</span></div>
+<div class="flex justify-between"><span>Deadline:</span><span class="text-[#E11D48] font-bold">April 15, 2026</span></div>
+<div class="flex justify-between"><span>Faculty PI:</span><span class="text-primary font-semibold">Prof. V. Babu</span></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<span class="font-label-xs text-[#10B981] flex items-center gap-0.5"><span class="material-symbols-outlined text-[14px]">verified</span>Verified</span>
+<button class="px-3 py-1 bg-primary text-on-primary rounded text-label-xs font-semibold hover:bg-primary-container transition-colors">Inspect Packet</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-xs font-bold">Microsoft Research</span>
+<span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs font-bold">94% Match</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-1">MSR India Research Fellow</h3>
+<p class="text-body-sm text-on-surface-variant mb-3">Systems &amp; LLM Alignment Team. 1-2 year pre-doctoral funded research fellowship.</p>
+<div class="space-y-1 font-label-xs text-[11px] text-on-surface-variant">
+<div class="flex justify-between"><span>Stipend:</span><span class="text-on-surface font-semibold">₹75,000 / mo</span></div>
+<div class="flex justify-between"><span>Deadline:</span><span class="text-[#E11D48] font-bold">May 01, 2026</span></div>
+<div class="flex justify-between"><span>Lead Mentor:</span><span class="text-primary font-semibold">Dr. S. Sengupta</span></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<span class="font-label-xs text-[#10B981] flex items-center gap-0.5"><span class="material-symbols-outlined text-[14px]">verified</span>Verified</span>
+<button class="px-3 py-1 bg-primary text-on-primary rounded text-label-xs font-semibold hover:bg-primary-container transition-colors">Inspect Packet</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-xs font-bold">IIT Bombay</span>
+<span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs font-bold">92% Match</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-1">Summer Research Fellow</h3>
+<p class="text-body-sm text-on-surface-variant mb-3">Center of Machine Intelligence and Data Science (C-MInDS). Reinforcement Learning focus.</p>
+<div class="space-y-1 font-label-xs text-[11px] text-on-surface-variant">
+<div class="flex justify-between"><span>Stipend:</span><span class="text-on-surface font-semibold">₹35,000 / mo</span></div>
+<div class="flex justify-between"><span>Deadline:</span><span class="text-on-surface-variant">Rolling (Apr 30)</span></div>
+<div class="flex justify-between"><span>Lab Host:</span><span class="text-primary font-semibold">C-MInDS Lab</span></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<span class="font-label-xs text-[#10B981] flex items-center gap-0.5"><span class="material-symbols-outlined text-[14px]">verified</span>Verified</span>
+<button class="px-3 py-1 bg-primary text-on-primary rounded text-label-xs font-semibold hover:bg-primary-container transition-colors">Inspect Packet</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-label-xs font-bold">IIT Delhi</span>
+<span class="px-2 py-0.5 rounded-full bg-[#10B981]/15 text-[#047857] font-label-xs font-bold">90% Match</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-1">Yardi ScAI Research Scholar</h3>
+<p class="text-body-sm text-on-surface-variant mb-3">School of Artificial Intelligence. Graph Neural Networks and Neuro-Symbolic AI.</p>
+<div class="space-y-1 font-label-xs text-[11px] text-on-surface-variant">
+<div class="flex justify-between"><span>Stipend:</span><span class="text-on-surface font-semibold">₹40,000 / mo</span></div>
+<div class="flex justify-between"><span>Deadline:</span><span class="text-[#E11D48] font-bold">May 10, 2026</span></div>
+<div class="flex justify-between"><span>Coordinator:</span><span class="text-primary font-semibold">Prof. M. Gupta</span></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<span class="font-label-xs text-[#10B981] flex items-center gap-0.5"><span class="material-symbols-outlined text-[14px]">verified</span>Verified</span>
+<button class="px-3 py-1 bg-primary text-on-primary rounded text-label-xs font-semibold hover:bg-primary-container transition-colors">Inspect Packet</button>
+</div>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[24px]">verified_user</span>
+<div>
+<span class="font-headline-sm font-bold text-on-surface block">Manager Agent Verified All 8 Application Checklists</span>
+<span class="font-body-sm text-on-surface-variant">Pre-drafted emails and faculty cold-contact outreach packages ready for review.</span>
+</div>
+</div>
+<button class="px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-headline-sm text-body-sm transition-colors" id="btn-return-office">
+      ← Return to Pixel Office
+    </button>
+</div>
+</div>
+</div></main></div>
+<script>
+(function() {
+  // Speed Factor State
+  let speed = 1;
+  let isRunning = false;
+
+  // DOM Elements
+  const consoleDrawer = document.getElementById('console-drawer');
+  const searchInput = document.getElementById('search-input');
+  const btnTrigger = document.getElementById('btn-trigger-search');
+  const btnSimulate = document.getElementById('btn-simulate');
+  const walker = document.getElementById('dynamic-walker');
+  const walkerSprite = document.getElementById('walker-sprite-img');
+  const managerBubble = document.getElementById('manager-bubble');
+  const managerBubbleText = document.getElementById('manager-bubble-text');
+  const scannerLaser = document.getElementById('scanner-laser');
+  const scannerGlow = document.getElementById('scanner-glow');
+  const scanCompleteCard = document.getElementById('scan-complete-card');
+  const traceStateTag = document.getElementById('trace-state-tag');
+  const statQueryPct = document.getElementById('stat-query-pct');
+  const barQuery = document.getElementById('bar-query');
+  const statDeadlinePct = document.getElementById('stat-deadline-pct');
+  const barDeadline = document.getElementById('bar-deadline');
+  const dossierStateLabel = document.getElementById('dossier-state-label');
+  const agentsActiveCount = document.getElementById('agents-active-count');
+
+  // Tab switcher
+  const viewModeA = document.getElementById('view-mode-a');
+  const viewModeB = document.getElementById('view-mode-b');
+  const navModeA = document.getElementById('nav-mode-a');
+  const navModeB = document.getElementById('nav-mode-b');
+  const tabBtnOffice = document.getElementById('tab-btn-office');
+  const tabBtnWorkspace = document.getElementById('tab-btn-workspace');
+  const tabBtnBackOffice = document.getElementById('tab-btn-back-office');
+  const tabBtnWorkspaceActive = document.getElementById('tab-btn-workspace-active');
+  const asideWorkspaceBtn = document.getElementById('aside-workspace-btn');
+  const btnReturnOffice = document.getElementById('btn-return-office');
+  const btnOpenWorkspaceSummary = document.getElementById('btn-open-workspace-summary');
+  const btnGotoWorkspaceFromScan = document.getElementById('btn-goto-workspace-from-scan');
+  const btnCloseScanCard = document.getElementById('btn-close-scan-card');
+
+  // PRD Specification Steps & Exact Copy
+  const steps = [
+    {
+      id: 1,
+      name: 'Planner',
+      char: 'char-desk-1',
+      x: 125, y: 535,
+      bubbles: ["Analyzing request...", "Creating search plan...", "✓ Plan ready"],
+      log: "Scraping query semantic parameters: B.Tech AI candidate targeting Indian Research Institutes."
+    },
+    {
+      id: 2,
+      name: 'Discovery',
+      char: 'char-desk-2',
+      x: 355, y: 535,
+      bubbles: ["Searching job listings...", "Filtering 42 candidate portals...", "✓ Opportunities found"],
+      log: "Discovered 42 postings across Google Jobs, Career Portals, IIT-B, and IISc CDS Labs."
+    },
+    {
+      id: 3,
+      name: 'Investigator',
+      char: 'char-desk-3',
+      x: 590, y: 535,
+      bubbles: ["Researching IIT/MSR labs...", "Gathering faculty & eligibility...", "✓ Lab context verified"],
+      log: "Crawled faculty PI directories, ongoing fellowship funding, and direct institutional contacts."
+    },
+    {
+      id: 4,
+      name: 'Verifier',
+      char: 'char-desk-4',
+      x: 820, y: 535,
+      bubbles: ["Cross-checking deadlines...", "Checking official portals...", "✓ Evidence verified"],
+      log: "Validated 2026 deadlines against official .ac.in domain records; discarded 4 stale entries."
+    },
+    {
+      id: 5,
+      name: 'Match',
+      char: 'char-desk-5',
+      x: 125, y: 745,
+      bubbles: ["Comparing your profile...", "Checking skill gaps (CUDA/PyTorch)...", "✓ Match matrix ready"],
+      log: "Computed candidate matrix: Aarav Sharma matches 8 positions with confidence > 90%."
+    },
+    {
+      id: 6,
+      name: 'Application',
+      char: 'char-desk-6',
+      x: 355, y: 745,
+      bubbles: ["Preparing application...", "Drafting resume highlights...", "✓ Checklist compiled"],
+      log: "Synthesized prerequisite submission checklists, transcripts, and SOP guidance."
+    },
+    {
+      id: 7,
+      name: 'Outreach',
+      char: 'char-desk-7',
+      x: 590, y: 745,
+      bubbles: ["Finding relevant contacts...", "Drafting outreach to PI...", "✓ Drafts ready"],
+      log: "Prepared tailored research inquiry drafts targeting corresponding lab PIs."
+    },
+    {
+      id: 8,
+      name: 'Monitor',
+      char: 'char-desk-8',
+      x: 820, y: 745,
+      bubbles: ["Checking opportunity status...", "Synthesizing master dossier...", "✓ Research complete"],
+      log: "Finalized 8 verified opportunity dossiers. Ready for Executive Manager verification handoff."
+    }
+  ];
+
+  // Sprite Sheet 4 Row Positions (Walking & Stand views)
+  // Row offsets in Image 4: Planner=0px, Discovery=104px, Investigator=208px, Verifier=312px, Match=416px, Application=520px, Outreach=624px, Monitor=728px, Manager=832px
+  const spriteYOffsets = {
+    1: -45,   // Planner
+    2: -150,  // Discovery
+    3: -254,  // Investigator
+    4: -358,  // Verifier
+    5: -462,  // Match
+    6: -566,  // Application
+    7: -670,  // Outreach
+    8: -774,  // Monitor
+    9: -878   // Manager
+  };
+
+  function setWalkerFrame(agentId, direction = 'right') {
+    const y = spriteYOffsets[agentId] || -45;
+    // Spritesheet col positions for walking right:
+    // When walking left, we mirror with transform scaleX(-1)
+    if (direction === 'left') {
+      walkerSprite.style.backgroundPosition = `-420px ${y}px`;
+      walkerSprite.style.transform = 'scaleX(-1)';
+    } else if (direction === 'up' || direction === 'down') {
+      walkerSprite.style.backgroundPosition = `-475px ${y}px`;
+      walkerSprite.style.transform = 'scaleX(1)';
+    } else {
+      walkerSprite.style.backgroundPosition = `-420px ${y}px`;
+      walkerSprite.style.transform = 'scaleX(1)';
+    }
+  }
+
+  function log(msg, color = 'text-[#E2E8F0]') {
+    if (!consoleDrawer) return;
+    const div = document.createElement('div');
+    div.className = color;
+    const time = new Date().toLocaleTimeString();
+    div.innerText = `[${time}] ${msg}`;
+    consoleDrawer.appendChild(div);
+    consoleDrawer.scrollTop = consoleDrawer.scrollHeight;
+  }
+
+  function delay(ms) {
+    return new Promise(res => setTimeout(res, ms / speed));
+  }
+
+  function setStepVisuals(stepIndex) {
+    for (let i = 1; i <= 8; i++) {
+      const stepEl = document.getElementById(`step-${i}`);
+      const borderEl = document.getElementById(`border-${i}`);
+      const charEl = document.getElementById(`char-desk-${i}`);
+      const bubbleEl = document.getElementById(`bubble-${i}`);
+
+      if (i < stepIndex) {
+        // Completed
+        if (stepEl) stepEl.className = 'workflow-step px-2 py-1 rounded bg-[#10B981] text-white font-bold flex items-center gap-1 shrink-0';
+        if (borderEl) borderEl.className = 'desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-[#10B981]/70 transition-all pointer-events-none';
+        if (charEl) charEl.classList.remove('typing-active');
+        if (bubbleEl) bubbleEl.classList.add('hidden');
+      } else if (i === stepIndex) {
+        // Active
+        if (stepEl) stepEl.className = 'workflow-step px-2 py-1 rounded bg-primary text-on-primary font-bold flex items-center gap-1 shrink-0 shadow animate-pulse';
+        if (borderEl) borderEl.className = 'desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-primary shadow-[0_0_12px_rgba(0,40,142,0.8)] transition-all pointer-events-none';
+        if (charEl) charEl.classList.add('typing-active');
+      } else {
+        // Standby
+        if (stepEl) stepEl.className = 'workflow-step px-2 py-1 rounded bg-surface-container-low text-on-surface-variant flex items-center gap-1 shrink-0';
+        if (borderEl) borderEl.className = 'desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-transparent transition-all pointer-events-none';
+        if (charEl) charEl.classList.remove('typing-active');
+        if (bubbleEl) bubbleEl.classList.add('hidden');
+      }
+    }
+  }
+
+  // Pure Aisle Movement: Moves agent through open corridors without desk clipping
+  // Row 1 Aisle Y: 575px, Row 2 Aisle Y: 785px, Center Corridor X: 470px
+  async function moveAlongAisle(fromX, fromY, toX, toY, agentId) {
+    walker.style.transition = 'none';
+    walker.style.left = `${fromX}px`;
+    walker.style.top = `${fromY}px`;
+    setWalkerFrame(agentId, toX >= fromX ? 'right' : 'left');
+    walker.classList.remove('hidden');
+    await delay(30);
+
+    // If moving within same row horizontally:
+    if (Math.abs(fromY - toY) < 30) {
+      walker.style.transition = `left ${850 / speed}ms linear, top ${850 / speed}ms linear`;
+      walker.style.left = `${toX}px`;
+      walker.style.top = `${toY}px`;
+      await delay(860);
+    } else {
+      // Need to navigate corridor: step into aisle, walk laterally, step into destination
+      const intermediateY = fromY > toY ? 590 : 610;
+      walker.style.transition = `top ${350 / speed}ms linear`;
+      walker.style.top = `${intermediateY}px`;
+      setWalkerFrame(agentId, 'down');
+      await delay(360);
+
+      walker.style.transition = `left ${650 / speed}ms linear`;
+      setWalkerFrame(agentId, toX >= fromX ? 'right' : 'left');
+      walker.style.left = `${toX}px`;
+      await delay(660);
+
+      walker.style.transition = `top ${350 / speed}ms linear`;
+      setWalkerFrame(agentId, 'up');
+      walker.style.top = `${toY}px`;
+      await delay(360);
+    }
+
+    walker.classList.add('hidden');
+  }
+
+  async function runSimulation() {
+    if (isRunning) return;
+    isRunning = true;
+    scanCompleteCard.classList.add('hidden');
+    traceStateTag.innerText = 'RUNNING';
+    traceStateTag.className = 'font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-primary text-on-primary font-bold';
+    agentsActiveCount.innerText = 'Simulation Active: Pipeline Running';
+    dossierStateLabel.innerText = 'Compiling...';
+
+    const q = searchInput.value || 'AI research internships in India';
+    log(`Starting full autonomous pipeline for: "${q}"`, 'text-[#38BDF8] font-semibold');
+
+    // Run steps 1 through 8
+    for (let i = 0; i < steps.length; i++) {
+      const s = steps[i];
+      setStepVisuals(s.id);
+
+      // Bubble PRD phase 1
+      const bubble = document.getElementById(`bubble-${s.id}`);
+      const bubbleText = bubble.querySelector('.bubble-msg');
+      bubble.classList.remove('hidden');
+      bubbleText.innerText = s.bubbles[0];
+      log(`[${s.name} Node] ${s.bubbles[0]}`);
+      await delay(800);
+
+      // Bubble PRD phase 2
+      bubbleText.innerText = s.bubbles[1];
+      log(`[${s.name} Node] ${s.log}`);
+      await delay(900);
+
+      // Bubble PRD phase 3 (Complete)
+      bubbleText.innerText = s.bubbles[2];
+      await delay(500);
+      bubble.classList.add('hidden');
+
+      // Update progress bars
+      if (barQuery) barQuery.style.width = `${Math.min(100, (i + 1) * 12.5)}%`;
+      if (barDeadline) barDeadline.style.width = `${Math.min(100, (i + 1) * 12)}%`;
+      if (statQueryPct) statQueryPct.innerText = `${Math.min(100, Math.round((i + 1) * 12.5))}% Coverage`;
+
+      // Animated Handoff to Next Agent
+      if (i < steps.length - 1) {
+        const next = steps[i + 1];
+        // Stand up from desk, walk along aisle, reach next desk
+        await moveAlongAisle(s.x, s.y, next.x, next.y, s.id);
+      }
+    }
+
+    // Hand-off from Monitor (Step 8) to Manager Executive Glass Suite
+    log('[Monitor Node] Synthesis complete. Delivering Master Dossier to Executive Manager...', 'text-[#F59E0B] font-bold');
+    const step8 = steps[7];
+    // Walk to Manager's door (Corridor path: x: 820, y: 745 -> x: 470, y: 600 -> x: 470, y: 260)
+    walker.style.transition = 'none';
+    walker.style.left = `${step8.x}px`;
+    walker.style.top = `${step8.y}px`;
+    walker.classList.remove('hidden');
+    setWalkerFrame(8, 'left');
+    await delay(30);
+
+    // Walk left to center corridor
+    walker.style.transition = `left ${700 / speed}ms linear`;
+    walker.style.left = '485px';
+    await delay(720);
+
+    // Walk up the center corridor into manager's glass office
+    setWalkerFrame(8, 'up');
+    walker.style.transition = `top ${850 / speed}ms linear`;
+    walker.style.top = '245px';
+    await delay(870);
+    walker.classList.add('hidden');
+
+    // Manager receives dossier
+    managerBubble.classList.remove('hidden');
+    managerBubbleText.innerText = "Dossier received. Transferring to Hardware Scanner...";
+    log('[Lead Manager] Received Master Dossier folder from Monitor Agent.', 'text-[#00F0FF] font-semibold');
+    await delay(1100);
+
+    // Manager stands and walks to Scanner unit (from x: 485, y: 235 to x: 195, y: 220)
+    walker.style.transition = 'none';
+    walker.style.left = '485px';
+    walker.style.top = '220px';
+    setWalkerFrame(9, 'left');
+    walker.classList.remove('hidden');
+    await delay(30);
+
+    walker.style.transition = `left ${850 / speed}ms linear`;
+    walker.style.left = '200px';
+    await delay(870);
+    walker.classList.add('hidden');
+
+    // Scanner Station activates laser beam & glow
+    managerBubbleText.innerText = "Scanner Bed active: Digitizing verified credentials...";
+    scannerLaser.classList.remove('hidden');
+    scannerGlow.classList.remove('hidden');
+    log('[Hardware Scanner] High-resolution laser verification pass initialized...', 'text-[#00F0FF]');
+    await delay(1600);
+
+    // Scanner Finished
+    scannerLaser.classList.add('hidden');
+    scannerGlow.classList.add('hidden');
+    managerBubbleText.innerText = "✓ 8 Opportunities Certified & Digitized!";
+    log('[Executive Manager] Verification Complete: 8 positions authenticated with confirmed stipends and official faculty contacts.', 'text-[#10B981] font-bold');
+
+    if (statDeadlinePct) statDeadlinePct.innerText = '100% Checked & Verified';
+    if (barDeadline) barDeadline.style.width = '100%';
+    if (dossierStateLabel) dossierStateLabel.innerText = '8 Verified Matches';
+    traceStateTag.innerText = 'VERIFIED';
+    traceStateTag.className = 'font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-[#10B981] text-white font-bold';
+    agentsActiveCount.innerText = 'All Nodes Synced';
+
+    // Show High-Fidelity Scanning Complete Card Overlay
+    scanCompleteCard.classList.remove('hidden');
+    await delay(1000);
+    managerBubble.classList.add('hidden');
+
+    isRunning = false;
+  }
+
+  function skipToScan() {
+    setStepVisuals(9);
+    for (let i = 1; i <= 8; i++) {
+      const s = document.getElementById(`step-${i}`);
+      const b = document.getElementById(`border-${i}`);
+      if (s) s.className = 'workflow-step px-2 py-1 rounded bg-[#10B981] text-white font-bold flex items-center gap-1 shrink-0';
+      if (b) b.className = 'desk-indicator absolute inset-x-2 inset-y-1 rounded-lg border-2 border-[#10B981]/80 transition-all pointer-events-none';
+    }
+    const mgrStep = document.getElementById('step-manager');
+    if (mgrStep) mgrStep.className = 'workflow-step px-2 py-1 rounded bg-primary text-on-primary font-bold flex items-center gap-1 shrink-0';
+
+    if (barQuery) barQuery.style.width = '100%';
+    if (barDeadline) barDeadline.style.width = '100%';
+    if (statQueryPct) statQueryPct.innerText = '100% Coverage';
+    if (statDeadlinePct) statDeadlinePct.innerText = '100% Verified';
+    if (dossierStateLabel) dossierStateLabel.innerText = '8 Verified Matches';
+    traceStateTag.innerText = 'VERIFIED';
+    traceStateTag.className = 'font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-[#10B981] text-white font-bold';
+
+    log('[FAST FORWARD] Skipped pipeline directly to Certified Scanner State.', 'text-[#00F0FF]');
+    scanCompleteCard.classList.remove('hidden');
+  }
+
+  // Switch between Mode A & Mode B
+  function showModeA() {
+    viewModeA.classList.remove('hidden');
+    viewModeB.classList.add('hidden');
+    navModeA.className = 'flex items-center gap-space-xs px-space-md py-space-xs rounded-lg transition-colors bg-surface-container-lowest text-on-surface font-headline-sm shadow-sm';
+    navModeB.className = 'flex items-center gap-space-xs px-space-md py-space-xs rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showModeB() {
+    viewModeA.classList.add('hidden');
+    viewModeB.classList.remove('hidden');
+    navModeB.className = 'flex items-center gap-space-xs px-space-md py-space-xs rounded-lg transition-colors bg-surface-container-lowest text-on-surface font-headline-sm shadow-sm';
+    navModeA.className = 'flex items-center gap-space-xs px-space-md py-space-xs rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Event Listeners
+  btnTrigger?.addEventListener('click', runSimulation);
+  btnSimulate?.addEventListener('click', runSimulation);
+
+  document.getElementById('speed-1x')?.addEventListener('click', (e) => {
+    speed = 1;
+    e.target.className = 'px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-xs font-semibold';
+    document.getElementById('speed-2x').className = 'px-2 py-0.5 rounded bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-xs font-semibold';
+  });
+
+  document.getElementById('speed-2x')?.addEventListener('click', (e) => {
+    speed = 2;
+    e.target.className = 'px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-xs font-semibold';
+    document.getElementById('speed-1x').className = 'px-2 py-0.5 rounded bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-xs font-semibold';
+  });
+
+  document.getElementById('speed-instant')?.addEventListener('click', skipToScan);
+
+  document.querySelectorAll('.sample-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (searchInput) searchInput.value = chip.dataset.query;
+      log(`Selected sample query: "${chip.dataset.query}"`, 'text-[#F59E0B]');
+    });
+  });
+
+  document.getElementById('btn-clear-logs')?.addEventListener('click', () => {
+    if (consoleDrawer) consoleDrawer.innerHTML = '<div class="text-[#94A3B8]">[LOG] Console cleared.</div>';
+  });
+
+  // Tab buttons
+  tabBtnOffice?.addEventListener('click', showModeA);
+  navModeA?.addEventListener('click', showModeA);
+  tabBtnBackOffice?.addEventListener('click', showModeA);
+  btnReturnOffice?.addEventListener('click', showModeA);
+
+  tabBtnWorkspace?.addEventListener('click', showModeB);
+  navModeB?.addEventListener('click', showModeB);
+  asideWorkspaceBtn?.addEventListener('click', showModeB);
+  btnOpenWorkspaceSummary?.addEventListener('click', showModeB);
+  btnGotoWorkspaceFromScan?.addEventListener('click', showModeB);
+
+  btnCloseScanCard?.addEventListener('click', () => {
+    scanCompleteCard.classList.add('hidden');
+  });
+
+  // Individual desk inspection triggers
+  document.querySelectorAll('.agent-desk').forEach(desk => {
+    desk.addEventListener('click', () => {
+      const id = desk.dataset.agent;
+      const s = steps.find(item => item.id == id);
+      if (s) {
+        const bubble = document.getElementById(`bubble-${id}`);
+        const bubbleText = bubble.querySelector('.bubble-msg');
+        bubbleText.innerText = `${s.name}: ${s.bubbles[0]}`;
+        bubble.classList.toggle('hidden');
+        setTimeout(() => bubble.classList.add('hidden'), 2500);
+        log(`Inspecting Node ${id} (${s.name}): Status Standby/Ready.`, 'text-[#94A3B8]');
+      }
+    });
+  });
+
+  document.getElementById('scanner-station')?.addEventListener('click', () => {
+    scanCompleteCard.classList.toggle('hidden');
+  });
+
+  document.getElementById('manager-office')?.addEventListener('click', () => {
+    managerBubble.classList.toggle('hidden');
+    managerBubbleText.innerText = "Executive Suite: Coordinating 8 Autonomous Research Nodes.";
+    setTimeout(() => managerBubble.classList.add('hidden'), 2500);
+  });
+
+})();
+</script></body></html>

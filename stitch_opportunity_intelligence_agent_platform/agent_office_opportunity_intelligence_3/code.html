@@ -1,0 +1,1427 @@
+<!DOCTYPE html><html lang="en" style="width: 2417px; height: 1424px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Opportunity Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base { html, body { margin:0; padding:0; } body { overscroll-behavior: none; } }
+    ::-webkit-scrollbar { display:none; }
+    .pixelated {
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+    @keyframes typingBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    .agent-typing {
+      animation: typingBounce 0.28s infinite ease-in-out;
+    }
+    @keyframes laserSweep {
+      0% { top: 0%; opacity: 0.9; }
+      50% { top: 88%; opacity: 1; }
+      100% { top: 0%; opacity: 0.9; }
+    }
+    .laser-beam {
+      animation: laserSweep 1.1s infinite ease-in-out;
+    }
+    /* Dynamic Walking Character Sprite Box: calibrated to 50x64 anchored bottom-center */
+    .sprite-actor {
+      width: 50px;
+      height: 64px;
+      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBtIbPyaUeC_UulU-S9ALiwYTg4zWufXf0a_-44KRofJXevyqOLAP0JM2ZlyOaflO4O3isVaFUWEFy4Bm03AXqX7q0lTqijKlbUxfFajCi7Ydg9wabW6gBSZQ12Z9y07fkVOHXcPCqx9kk_6a0ubUBJ5OwfWGIU8kbyJbeDaCZiNryKfAN7B5dQHvhjUnGUY1tXvDKeDH39fuVco7jZck22po0_cICTlSwUERl8B4vVVGOn120THzJQYbAkrFl0_FmItQ');
+      background-repeat: no-repeat;
+      image-rendering: pixelated;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#00288e",
+            "primary-container": "#1e40af",
+            "on-primary": "#ffffff",
+            "on-surface": "#0b1c30",
+            "surface": "#f8f9ff",
+            "surface-dim": "#cbdbf5",
+            "surface-bright": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "surface-container-high": "#dce9ff",
+            "surface-container-highest": "#d3e4fe",
+            "secondary-container": "#dae2fd",
+            "on-secondary-container": "#5c647a",
+            "on-secondary-fixed": "#131b2e",
+            "secondary-fixed": "#dae2fd",
+            "primary-fixed": "#dde1ff",
+            "on-primary-fixed-variant": "#173bab",
+            "tertiary": "#002e81",
+            "tertiary-container": "#0042b2",
+            "on-surface-variant": "#444653",
+            "outline-variant": "#c4c5d5",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a"
+          },
+          fontFamily: {
+            "headline-xl": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-md": ["JetBrains Mono"],
+            "label-sm": ["JetBrains Mono"],
+            "label-xs": ["JetBrains Mono"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F6F4EE] font-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary/20">
+<!-- MINIMAL TOP NAVIGATION -->
+<header class="w-full bg-[#FFFFFF]/90 backdrop-blur-md border-b border-[#E6DEC8] z-30 sticky top-0">
+<div class="max-w-[1400px] mx-auto h-14 px-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+</div>
+<span class="font-headline-sm font-semibold tracking-tight text-[#0B1C30] text-[15px]">Opportunity Intelligence</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2.5 pl-3 border-l border-outline-variant/40">
+<div class="w-8 h-8 rounded-full bg-[#203A43] text-white flex items-center justify-center font-medium text-xs shadow-xs">
+          AS
+        </div>
+<div class="hidden sm:flex flex-col">
+<span class="text-[12px] font-semibold leading-tight text-[#0B1C30]">Aarav Sharma</span>
+<span class="text-[10px] text-on-surface-variant font-label-xs leading-none">B.Tech / AI Research</span>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors ml-1" title="Account Settings">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full flex flex-col items-center justify-start p-2 sm:p-4 md:p-6 overflow-x-hidden">
+<!-- VIEW 1: DOMINANT PIXEL OFFICE CANVAS -->
+<div class="w-full max-w-[1360px] flex flex-col items-center" id="office-view-container">
+<!-- SEARCH & DISPATCH BAR (Directly above glass office) -->
+<div class="w-full max-w-[640px] mb-3 z-20">
+<div class="relative flex items-center bg-white/95 rounded-2xl shadow-lg border border-[#D9CEBA] p-1.5 focus-within:ring-2 focus-within:ring-primary/30 transition-all">
+<div class="pl-3.5 pr-2 text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined text-[20px] text-primary">search</span>
+</div>
+<input class="w-full bg-transparent border-none text-[#0B1C30] placeholder:text-on-surface-variant/70 font-body-md text-[14px] focus:outline-none focus:ring-0 py-2" id="search-input" placeholder="What research opportunity or fellowship shall we investigate?" type="text" value="Find AI research internships in India">
+<button class="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-primary-container text-white rounded-xl font-medium text-[13px] shadow transition-colors shrink-0" id="btn-submit-task">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+<span id="btn-submit-label" class="">Send Task</span>
+</button>
+</div>
+<!-- Presets -->
+<div class="flex items-center justify-center gap-2 mt-2">
+<span class="text-[11px] font-label-xs text-on-surface-variant">Presets:</span>
+<button class="quick-chip text-[11px] font-label-xs px-2.5 py-0.5 rounded-full bg-white/70 hover:bg-white text-on-surface border border-[#E0D7C6] transition-colors" data-task="Find AI research internships in India">AI Research</button>
+<button class="quick-chip text-[11px] font-label-xs px-2.5 py-0.5 rounded-full bg-white/70 hover:bg-white text-on-surface border border-[#E0D7C6] transition-colors" data-task="IISc &amp; IIT Deep Learning Fellowships 2026">IISc / IIT</button>
+<button class="quick-chip text-[11px] font-label-xs px-2.5 py-0.5 rounded-full bg-white/70 hover:bg-white text-on-surface border border-[#E0D7C6] transition-colors" data-task="Microsoft Research India Undergraduate Residency">MSR Residency</button>
+</div>
+</div>
+<!-- PIXEL ART OFFICE VIEWPORT (Calibrated to 1310 x 1200 Specification) -->
+<div class="relative w-full overflow-x-auto flex justify-center pb-6">
+<div class="relative w-[1310px] h-[1200px] shrink-0 shadow-2xl rounded-2xl overflow-hidden pixelated border-2 border-[#D5CABB]" id="office-board" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuB65Vif0MYMZK1KPFXGYlkNYHep7kIFWqt9E--7dTz7IFOjeB8OI-nU45_HbKVR6cUOG_W9Bpp359o7m4vhaYf5ZdPbhLK5TVwU5QfQf3k2LeARKF82PnUjHcaKSDCjP_S98JLCmlB1C5N1-1DfUnkPetsE_nImq1Bc9TdQiwL8vm-7m67z0R-hoLQpBQNrNsPt8_9QjxdHY8Z4AV5yJ_kRyexfcRwyGoBxC1ooNRiBt0NJ6Tkn6O08SlLfGUIZDRRrYg&quot;); background-size: 1310px 1200px; background-repeat: no-repeat;">
+<!-- LAYER OF SEATED AGENTS AT DESKS -->
+<!-- Manager Desk: anchor (640, 274), bounding box 70x75 -->
+<div class="seated-agent-station absolute pointer-events-none z-20 pixelated transition-transform" id="seated-agent-manager" style="left: 605px; top: 235px; width: 70px; height: 75px; background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBMB_b-vF4ajNw9GuXy5TjTJLSpuH2Q6LaAj074J7XVDHqE0MIUsOuYvQald4zp8-KT6I7qSNReOjdtpYOfNGDWU1es8mpmwJ83-excO-YFyHJP9jeL6RezQ5cPnc_rKh2i6MJtHU73e0BCHWl7UIEtpLr6j8e-7mQ_AX910p1x3s7rHxzqUZm_7o1ou3sVpR0n3qFew9oCvFZaDb-90gXAkiBNOYydbU_UDSw7lwihvGOO-MG7GDyA789uLOwL6OuhUA&quot;); background-position: -605px -235px; background-size: 1310px 1200px;"></div>
+<!-- Row 1 Seated Agents (y: 605, height: 75px) -->
+<!-- Agent 1 (Planner): x: 195, seated box: 160-230 -->
+<div class="seated-agent-station absolute pointer-events-none z-20 pixelated transition-transform" id="seated-agent-1" style="left: 155px; top: 595px; width: 80px; height: 85px; background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA1tVUyFqe7zKDebyuV9-sAUqklrzTdZc6XpPXTfk41UaH_6zlUJk4WMxuQ6wmtOMmOgOV5ykU1mKV9DmcBlpm7NgKgFna-HgIGawGShzVWNC0HTrxqOHwC6jMsDo5VnYbOZxwSy9Su7_yzvVxWmVkq5oE8WYnxXbrxiP9B8bp9fMwHlFjjEnhwkkGM1vzZIKfbytH37cwKWke5hcUzsElF6SQx-AIAdKyFA_W40vT9wok_R1y3Rmq35NLUD2EUZ02nPg&quot;); background-position: -155px -595px; background-size: 1310px 1200px;"></div>
+<!-- Agent 2 (Discovery): x: 495, seated box: 460-530 -->
+<div class="seated-agent-station absolute pointer-events-none z-20 pixelated transition-transform" id="seated-agent-2" style="left: 455px; top: 595px; width: 80px; height: 85px; background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBX7wMh-3uNsKTXXaoydndUQx3fFOTAvw0lIzJ8l5HMS6nauJym1OmYXeVmcZAbAUYkGv2nlKi-REGVnM1nOQS-4bY3oP72nQi_IZxJM8TZd-Dk-cLvy523H0MjUmC3nUNrPF0pTQm1WH1Hy8m_B4nWcmXiUtGZ3vaNsBLvwpIExppabNUaPSeFNyAoNpUu3RDvGJWLIStC2yDGBO01nhqfOQr1U-oOC9X7rz51XZOYa2fGz-TiQKkNXitYhuNrNjGmmg&quot;); background-position: -455px -595px; background-size: 1310px 1200px;"></div>
+<!-- Agent 3 (Investigator): x: 795, seated box: 760-830 -->
+<div class="seated-agent-station absolute pointer-events-none z-20 pixelated transition-transform" id="seated-agent-3" style="left: 755px; top: 595px; width: 80px; height: 85px; background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDEAMyWwFkmRm_vqpToEOthnAvHaJ3FqZNss-YWhtWQSeI-B04fWVsoXAsIXOiYwAfsoRZcAmlm8v8tAbL_iUqIni9KCbfD-juqKrKvxhDceJLzJrQBK8u3kxoHeDKtFdOKul2ehEgcp2vHSqvFnLCVL0INPfm79-zUAh6CGds7646jMzVvqk-DOuDoUCAdk2LiHsLg364Jjl1nTJ967liD-sHgN5FVMq8k_V7iGIQYSz-3WzcexgdhIjdkeDgCcnyZ8g&quot;); background-position: -755px -595px; background-size: 1310px 1200px;"></div>
+<!-- Agent 4 (Verifier): x: 1092, seated box: 1057-1127 -->
+<div class="seated-agent-station absolute pointer-events-none z-20 pixelated transition-transform" id="seated-agent-4" style="left: 1052px; top: 595px; width: 80px; height: 85px; background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuADsnheSXaze4fPKR7jwtiTOddOap6rYs8LX5ueDWcf-st8P9-YyCED_XjaOxv47I2cg6YzrE2Ubl_mrW7OLNsxRiHDOGOs3srztR2gjB4lvWlU2DNK5PfVwVo7UvzTRuea0-PGEFH0xyQZY6spy9d5q-vK0akWUdACqN68UA_P77tKTmrvIkOOV8INgyYmqQAQtbWF25pMaU3UclsNyhLuDf0T2fKdeNLbZPLfRbWl_-CfUF3AKPBwCdDOcO8DTrg1Ww&quot;); background-position: -1052px -595px; background-size: 1310px 1200px;"></div>
+<!-- Row 2 Seated Agents (y: 845, height: 75px) -->
+<!-- Agent 5 (Match): x: 195, seated box: 160-230 -->
+<div class="seated-agent-station absolute pointer-events-none z-20 pixelated transition-transform" id="seated-agent-5" style="left: 155px; top: 835px; width: 80px; height: 85px; background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDY4x305UnSHjXRU90TXBk-CfaQtHHPMcjb3wJH16UrxwN2CY_kZPRmI5iQ6Oiqe0DChP9flhMf9yvEOxLAkPzdUOx_TaVtBdlsKSDMNAGO4ePfjfc0Def4Otyn34ozi7j9IQNMhYh-j4ZRsYaee8xWAxTFrId5PEB9mqT8Ldu9THiqmhnLx_8rGVmEe7wNHDbVWV4MYcxdOFtya4Htzdw0tlC9q7l6lg9CNojfWYkooZRgPtOFxjSCTy-QhXQOIUrglQ&quot;); background-position: -155px -835px; background-size: 1310px 1200px;"></div>
+<!-- Agent 6 (Application): x: 495, seated box: 460-530 -->
+<div class="seated-agent-station absolute pointer-events-none z-20 pixelated transition-transform" id="seated-agent-6" style="left: 455px; top: 835px; width: 80px; height: 85px; background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCwoDcgHp32HzLLxAdbs2Uh0z9t3XLR8YLVfbr4K8f9kI-kAT8btRuq-T-MOMPQOn0JtYwbaoc4GHyUaaqXzY9Gg-Zbo17ogZZHL7fKqnuKP3sdmdrAKvOi2cyApGc_Qb4Mw1I_EWH9DeDm_AiRuRUUT5fw9g6s6r-70JElwBIUrlzY6Kcd9M8PX9k2MpS_UlTECQX-DkxZj_V8zlETTF5Vs3NrTrr5YGRLXeiqnNHCQyPrYXqRLhqvDqwcfi4gYd_Mlg&quot;); background-position: -455px -835px; background-size: 1310px 1200px;"></div>
+<!-- Agent 7 (Outreach): x: 795, seated box: 760-830 -->
+<div class="seated-agent-station absolute pointer-events-none z-20 pixelated transition-transform" id="seated-agent-7" style="left: 755px; top: 835px; width: 80px; height: 85px; background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuA9TVcq5mnYFxLnaGeUJgSgdP0rTkV78A7HYEfHneJEzdoKR_h3z7DPtKpfXCFi2l5x8jegOHdNgQml0jXXtdWVcPrfj01QfIuFwfOrmmaYJILK3huRv5gwRFE3ePnORdq-JN1lWu99yD2_4npn26otb2bWGxBpGMCm50kcHkqJkt7zfn3dVUJF76ij0iWsfCuUXM4rKb3vzdoR00YMT-YxVbAYLg9v3MSBpu7CCqaEZViFJUvw2pUHwMgDzDYmGPYfkg&quot;); background-position: -755px -835px; background-size: 1310px 1200px;"></div>
+<!-- Agent 8 (Monitor): x: 1092, seated box: 1057-1127 -->
+<div class="seated-agent-station absolute pointer-events-none z-20 pixelated transition-transform" id="seated-agent-8" style="left: 1052px; top: 835px; width: 80px; height: 85px; background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDpaexvp7uF4LNPR6L_CbTyjPoTmpWnOAbLUE-QWfDrpZXzUzhZ-EsF7tljcIHk6qCMbFsk5lmy6GARCJOoFq0GFB1md1kskWM2oEvIBJm2FMWWobJimab6Ht-QYrIuQQp0Jw3XlH61lEAR3XT6vifiOcEDbQcNUzCRvww2qCznMBGllmH-50DjLAhDsyJ1EfgAKYxQj3aHC7K8jLapn8CjPIdOloIIEXheOXM49_y7T3DCofA8bDiVTckgnDdb2uq5Ug&quot;); background-position: -1052px -835px; background-size: 1310px 1200px;"></div>
+<!-- SVG PATHS & WAYPOINT OVERLAY LAYER (Hidden by default) -->
+<svg class="hidden absolute inset-0 w-[1310px] h-[1200px] pointer-events-none z-25" id="nav-overlay-svg" viewBox="0 0 1310 1200">
+<!-- Planner to Discovery -->
+<polyline fill="none" points="195,721 195,756 495,756 495,721" stroke="#0284C7" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Discovery to Investigator -->
+<polyline fill="none" points="495,721 495,756 795,756 795,721" stroke="#0284C7" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Investigator to Verifier -->
+<polyline fill="none" points="795,721 795,756 1092,756 1092,721" stroke="#0284C7" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Verifier to Match -->
+<polyline fill="none" points="1092,721 1160,721 1160,810 195,810 195,965" stroke="#0284C7" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Match to Application -->
+<polyline fill="none" points="195,965 195,1000 495,1000 495,965" stroke="#0284C7" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Application to Outreach -->
+<polyline fill="none" points="495,965 495,1000 795,1000 795,965" stroke="#0284C7" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Outreach to Monitor -->
+<polyline fill="none" points="795,965 795,1000 1092,1000 1092,965" stroke="#0284C7" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Monitor to Manager -->
+<polyline fill="none" points="1092,965 1165,965 1165,475 900,475 900,409 867,409 867,390 640,390 640,326" stroke="#0284C7" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Manager to Scanner -->
+<polyline fill="none" points="640,326 867,326 867,409 900,409 900,455 245,455 245,426 232,321" stroke="#0ea5e9" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Waypoint Nodes -->
+<circle cx="195" cy="721" fill="#38bdf8" r="5" stroke="#0369a1" stroke-width="2"></circle>
+<circle cx="495" cy="721" fill="#38bdf8" r="5" stroke="#0369a1" stroke-width="2"></circle>
+<circle cx="795" cy="721" fill="#38bdf8" r="5" stroke="#0369a1" stroke-width="2"></circle>
+<circle cx="1092" cy="721" fill="#38bdf8" r="5" stroke="#0369a1" stroke-width="2"></circle>
+<circle cx="195" cy="965" fill="#38bdf8" r="5" stroke="#0369a1" stroke-width="2"></circle>
+<circle cx="495" cy="965" fill="#38bdf8" r="5" stroke="#0369a1" stroke-width="2"></circle>
+<circle cx="795" cy="965" fill="#38bdf8" r="5" stroke="#0369a1" stroke-width="2"></circle>
+<circle cx="1092" cy="965" fill="#38bdf8" r="5" stroke="#0369a1" stroke-width="2"></circle>
+<circle cx="640" cy="326" fill="#f59e0b" r="6" stroke="#b45309" stroke-width="2"></circle>
+<circle cx="867" cy="409" fill="#10b981" r="5" stroke="#047857" stroke-width="2"></circle>
+<circle cx="245" cy="426" fill="#06b6d4" r="5" stroke="#0e7490" stroke-width="2"></circle>
+<circle cx="232" cy="321" fill="#ec4899" r="6" stroke="#be185d" stroke-width="2"></circle>
+<circle cx="195" cy="642" fill="#ef4444" r="4" stroke="#991b1b" stroke-width="1.5"></circle>
+<circle cx="495" cy="642" fill="#ef4444" r="4" stroke="#991b1b" stroke-width="1.5"></circle>
+<circle cx="795" cy="642" fill="#ef4444" r="4" stroke="#991b1b" stroke-width="1.5"></circle>
+<circle cx="1092" cy="642" fill="#ef4444" r="4" stroke="#991b1b" stroke-width="1.5"></circle>
+<circle cx="195" cy="884" fill="#ef4444" r="4" stroke="#991b1b" stroke-width="1.5"></circle>
+<circle cx="495" cy="884" fill="#ef4444" r="4" stroke="#991b1b" stroke-width="1.5"></circle>
+<circle cx="795" cy="884" fill="#ef4444" r="4" stroke="#991b1b" stroke-width="1.5"></circle>
+<circle cx="1092" cy="884" fill="#ef4444" r="4" stroke="#991b1b" stroke-width="1.5"></circle>
+<circle cx="640" cy="274" fill="#ef4444" r="4" stroke="#991b1b" stroke-width="1.5"></circle>
+</svg>
+<!-- HARDWARE SCANNER / PRINTER STATION (Top Left: anchor 232, 321) -->
+<div class="absolute top-[260px] left-[190px] w-[85px] h-[100px] cursor-pointer group z-20" id="scanner-unit" title="Digitizer / Document Scanner (Anchor: 232, 321)">
+<div class="relative w-full h-full">
+<div class="hidden absolute left-0 right-0 h-1.5 bg-[#00F0FF] shadow-[0_0_12px_#00F0FF] rounded-full z-30 laser-beam" id="scanner-laser-bar"></div>
+<div class="hidden absolute inset-0 bg-[#00F0FF]/25 rounded-md pointer-events-none" id="scanner-laser-bed"></div>
+</div>
+</div>
+<!-- STANDING / WALKING CHARACTER SPRITE (Single entity when active, anchored feet-center) -->
+<div class="hidden absolute z-30 pointer-events-none" id="active-actor" style="transform: translate(-25px, -64px);">
+<div class="sprite-actor relative" id="actor-sprite" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCayrTPX1xGNbktWnjaK6jpIyAM69sNUviHM6wWmpDvKoGvWv5HgZsQ7PAinW9hI5SQd5SgcUF3dzGQxYl8w8h69RX3cuIGPsm38b52bf1OeF-khpc-UTFDDCeIV2Pqp1gY0XEFMODwBbaUqJF9Lj2Ty2f8Om8PTjULuwQ1o-5vv-vtAVKH8GmbaMFYDUi0-tuwEmvIgN3DsposCy06ga2PlCYkFVlc-F1aHs6SaUfh3fBy_J_TjVMFq07Y-vqE3H8X2Q&quot;);">
+<!-- Physical Dossier Icon in Hands when walking -->
+<div class="hidden absolute -right-1 top-4 w-3.5 h-3 bg-[#EAB308] border border-[#854D0E] rounded-xs shadow-xs text-[8px] flex items-center justify-center font-bold" id="actor-dossier">📄</div>
+</div>
+</div>
+<!-- FLOATING COMMENT SPEECH BUBBLE (Appears above active agent) -->
+<div class="hidden absolute z-40 pointer-events-none transition-all duration-150" id="active-speech-bubble" style="transform: translate(-50%, -100%);">
+<div class="relative bg-white text-[#0B1C30] px-3 py-1.5 rounded-lg border-2 border-[#1E293B] shadow-xl font-label-xs text-[11px] whitespace-nowrap flex items-center gap-1.5 mb-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping shrink-0" id="bubble-dot"></span>
+<span class="font-bold text-primary" id="bubble-name">Agent:</span>
+<span class="bubble-text text-[#0B1C30]" id="bubble-text">Working...</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-[#1E293B]"></div>
+</div>
+</div>
+<!-- HANDOFF NOTIFICATION BADGE -->
+<div class="hidden absolute z-40 pointer-events-none bg-emerald-600 text-white font-label-xs text-[10px] px-2 py-0.5 rounded shadow-lg border border-white" id="handoff-badge" style="transform: translate(-50%, -100%);">
+          Handoff Complete ✓
+        </div>
+<!-- SCANNING CONFIRMATION POPUP -->
+<div class="hidden absolute top-[210px] left-[120px] w-[320px] bg-white/95 backdrop-blur-md rounded-xl p-4 border border-[#00F0FF] shadow-2xl z-50 animate-in fade-in zoom-in duration-200" id="scanner-done-popup">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-[#00A3C4] text-[22px]">verified</span>
+<div>
+<span class="font-headline-sm text-[13px] font-bold text-[#0B1C30] block leading-tight">Verification Complete</span>
+<span class="font-label-xs text-[10px] text-[#10B981] font-semibold">8 Opportunities Certified &amp; Digitized</span>
+</div>
+</div>
+<p class="text-[12px] text-on-surface-variant mb-3">IISc, IIT-B, IIT-D, and MSR listings verified. Stipends &amp; direct PI emails confirmed.</p>
+<button class="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-primary hover:bg-primary-container text-white rounded-lg font-medium text-[12px] shadow-sm transition-all" id="btn-view-results">
+<span class="">Open Verified Opportunities (8)</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- VIEW 2: MODE B VERIFIED RESULTS WORKSPACE (SCREEN_2 Full Structure) -->
+<div class="hidden w-full flex-col" id="workspace-view-container">
+<!-- Top Workspace Sub-Header / Shell Bar -->
+<div class="w-full bg-surface-container-lowest border-b border-surface-container px-6 py-2.5 flex items-center justify-between shadow-xs mb-4">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 bg-surface-container-low px-2.5 py-1 rounded-lg">
+<button class="px-3 py-1 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-medium transition-colors flex items-center gap-1.5" id="btn-subnav-office">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+<span class="">Agent Office (Mode A)</span>
+</button>
+<span class="px-3 py-1 rounded bg-primary-container text-on-primary font-headline-sm text-body-sm shadow-xs flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="">Opportunities Workspace (Mode B) [8 Found]</span>
+</span>
+<span class="px-3 py-1 rounded text-body-sm text-on-surface-variant font-medium">Watchlist &amp; Monitored [3]</span>
+</div>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high rounded-lg text-primary font-medium text-[13px] transition-colors" id="btn-back-to-office">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+<span class="">Return to Agent Office</span>
+</button>
+</div>
+<div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 pb-12">
+<!-- Top Research Directive & Active Session Banner -->
+<section class="mb-6">
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm border border-outline-variant/30">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-start gap-4 min-w-0">
+<div class="w-11 h-11 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant uppercase tracking-wider">Session #OR-9082</span>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container uppercase">Multi-Agent Protocol Active</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Engine Synced
+              </span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface truncate mt-1">
+              Active Research Directive: Find AI research internships in India and help me apply
+            </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">
+              Target Profile: <strong class="text-on-surface font-headline-sm">Aarav Sharma</strong> (Pre-final year B.Tech CS / AI Specialization, CGPA 9.2/10, PyTorch, CUDA, Transformers, ArXiv preprint 2501.0823)
+            </p>
+</div>
+</div>
+<!-- Action Toolbar -->
+<div class="flex flex-wrap items-center gap-2 shrink-0">
+<button class="h-9 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span class="">Refine Directive</span>
+</button>
+<button class="h-9 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="">Export Verified (PDF/JSON)</span>
+</button>
+<button class="h-9 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+<span class="">Save Filter</span>
+</button>
+<button class="h-9 px-3 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-headline-sm flex items-center gap-1.5 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+<span class="">Batch Sync Radar</span>
+</button>
+</div>
+</div>
+<!-- Filter Tabs -->
+<div class="flex items-center gap-2 overflow-x-auto pt-3 mt-4 border-t border-surface-container">
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-sm whitespace-nowrap">
+          All Findings (8)
+        </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm whitespace-nowrap transition-colors">
+          Verified Official (5)
+        </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-error font-label-sm whitespace-nowrap flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[15px]">warning</span>
+          Conflicting Deadlines (2)
+        </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm whitespace-nowrap transition-colors">
+          Actively Monitored (3)
+        </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm whitespace-nowrap transition-colors">
+          Remote / Hybrid (4)
+        </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm whitespace-nowrap transition-colors">
+          Stipend &gt; ₹30,000 (6)
+        </button>
+</div>
+</div>
+</section>
+<!-- KPI Summary Row -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/20 flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px]">travel_explore</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">8</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Discovered Positions</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant truncate">SerpApi multi-vertical feed</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/20 flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary-container text-on-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">5</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Portals Verified</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant truncate">100% cryptographic hashes</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/20 flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px]">fmd_bad</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-lg text-headline-lg text-error font-bold">2</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Attention Flags</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant truncate">Discrepancy: Portal vs PI Post</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/20 flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[26px]">radar</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-lg text-headline-lg text-on-surface font-bold">3</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Active Watchlists</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant truncate">Automated hourly heartbeat</span>
+</div>
+</div>
+</section>
+<!-- 2-Column Responsive Findings & Deep Dive Workspace -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+<!-- LEFT COLUMN: Opportunity Stream (40% width) -->
+<div class="xl:col-span-5 flex flex-col gap-4">
+<div class="flex items-center justify-between px-1">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">view_timeline</span>
+          Stream Findings
+        </span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Sorted by Match Score &amp; Trust Index</span>
+</div>
+<!-- Card 1: SELECTED / ACTIVE -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-md ring-2 ring-primary relative cursor-pointer transition-all hover:bg-surface-bright">
+<div class="absolute -left-1 top-4 bottom-4 w-1.5 bg-primary rounded-r"></div>
+<div class="flex items-center justify-between gap-2 mb-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+            VERIFIED OFFICIAL PORTAL
+          </div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-xs text-label-xs text-on-surface-variant">4m ago</span>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-bold">94% MATCH</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-snug">
+          AI Research Intern (Computer Vision &amp; Foundation Models)
+        </h2>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm mt-0.5">
+<span class="font-semibold text-on-surface">Microsoft Research India</span>
+<span class="">•</span>
+<span class="">Bengaluru (On-site / Hybrid)</span>
+</div>
+<!-- Metadata Pills -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-xs">
+            Deadline: Oct 15, 2026 (Rolling)
+          </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-xs">
+            Cohort: Summer 2026
+          </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-xs">
+            Gap: CUDA / TensorRT profiling
+          </span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-xs pt-3 mt-3 border-t border-surface-container-low">
+<span class="truncate">careers.microsoft.com/r/india-ai</span>
+<span class="text-primary font-medium flex items-center gap-0.5">Inspected <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+</div>
+</article>
+<!-- Card 2: Google Research -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md cursor-pointer transition-all border border-outline-variant/20">
+<div class="flex items-center justify-between gap-2 mb-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+            VERIFIED OFFICIAL
+          </div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-xs text-label-xs text-on-surface-variant">18m ago</span>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-bold">91% MATCH</span>
+</div>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-snug">
+          Pre-Doctoral Research Fellow (Generative AI &amp; LLMs)
+        </h2>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm mt-0.5">
+<span class="font-semibold text-on-surface">Google Research India</span>
+<span class="">•</span>
+<span class="">Bengaluru, India</span>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-xs">
+            Deadline: Nov 1, 2026
+          </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-xs">
+            Cohort: 12 Fellows
+          </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-xs">
+            Research: Multi-lingual SLMs
+          </span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-xs pt-3 mt-3 border-t border-surface-container-low">
+<span class="truncate">research.google/careers/india-fellows</span>
+<span class="hover:text-primary font-medium flex items-center gap-0.5">View details <span class="material-symbols-outlined text-[14px]">chevron_right</span></span>
+</div>
+</article>
+<!-- Card 3: Wadhwani AI (Amber alert / discrepancy) -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md cursor-pointer transition-all border-l-4 border-error border border-outline-variant/20">
+<div class="flex items-center justify-between gap-2 mb-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-xs font-semibold">
+<span class="material-symbols-outlined text-[12px]">priority_high</span>
+            UNCERTAINTY: CONFLICTING DEADLINES
+          </div>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-bold">82% MATCH</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-snug">
+          Summer Research Internship 2026
+        </h2>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm mt-0.5">
+<span class="font-semibold text-on-surface">Wadhwani AI</span>
+<span class="">•</span>
+<span class="">Mumbai / Bengaluru</span>
+</div>
+<!-- Discrepancy Box -->
+<div class="mt-3 p-2 px-2.5 rounded bg-error-container/40 text-on-error-container font-body-sm text-[12px] flex items-start gap-1.5">
+<span class="material-symbols-outlined text-[16px] shrink-0 text-error mt-0.5">rule</span>
+<p class="">
+            Official Portal lists <strong>May 10, 2026</strong>; PI Lab Post lists <strong>May 30, 2026</strong>. Verifier Agent has flagged human verification.
+          </p>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-xs pt-3 mt-3 border-t border-surface-container-low">
+<span class="truncate">wadhwaniai.org/research/fellowships</span>
+<span class="text-error font-medium flex items-center gap-0.5">Review Flag <span class="material-symbols-outlined text-[14px]">flag</span></span>
+</div>
+</article>
+<!-- Card 4: IIIT-H KCIS -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md cursor-pointer transition-all border border-outline-variant/20">
+<div class="flex items-center justify-between gap-2 mb-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+            VERIFIED INSTITUTIONAL
+          </div>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-bold">87% MATCH</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-snug">
+          Graduate Research Intern (NLP &amp; Speech Technologies)
+        </h2>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm mt-0.5">
+<span class="font-semibold text-on-surface">Kohli Centre on Intelligent Systems (KCIS), IIIT-H</span>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-xs">
+            Indic Speech &amp; Tokenization
+          </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-label-xs">
+            Stipend: ₹35,000/mo + Hostel
+          </span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-xs pt-3 mt-3 border-t border-surface-container-low">
+<span class="truncate">kcis.iiit.ac.in/admissions/internships</span>
+<span class="hover:text-primary font-medium flex items-center gap-0.5">Inspect <span class="material-symbols-outlined text-[14px]">chevron_right</span></span>
+</div>
+</article>
+<!-- Card 5: RBCDSAI IIT Madras -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-sm hover:shadow-md cursor-pointer transition-all border border-outline-variant/20">
+<div class="flex items-center justify-between gap-2 mb-1">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-xs">
+<span class="material-symbols-outlined text-[13px] text-tertiary">update</span>
+            MONITORED: CHANGE DETECTED
+          </div>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-bold">79% MATCH</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-snug">
+          Autonomous Systems &amp; Robotics Research Intern
+        </h2>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm mt-0.5">
+<span class="font-semibold text-on-surface">RBCDSAI, IIT Madras</span>
+<span class="">•</span>
+<span class="">Chennai, India</span>
+</div>
+<div class="mt-3 p-2 px-2.5 rounded bg-surface-container text-on-surface font-body-sm text-[12px] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">calendar_clock</span>
+<span class="">Deadline extended by <strong>+14 days</strong> (Automated delta check 2h ago).</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-xs pt-3 mt-3 border-t border-surface-container-low">
+<span class="truncate">rbcdsai.iitm.ac.in/fellowships-2026</span>
+<span class="hover:text-primary font-medium flex items-center gap-0.5">View diff <span class="material-symbols-outlined text-[14px]">history</span></span>
+</div>
+</article>
+</div>
+<!-- RIGHT COLUMN: Deep-Dive Opportunity Dossier & Verification Report (60% width) -->
+<div class="xl:col-span-7 flex flex-col gap-6">
+<!-- Dossier Section 1: Header & Primary Directives -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center p-2 text-primary shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[32px]">science</span>
+</div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-xs font-semibold">
+                  CRYPTOGRAPHICALLY AUDITED
+                </span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">ID: MSR-IN-2026-CV08</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold mt-1">
+                AI Research Intern (Computer Vision &amp; Foundation Models)
+              </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Microsoft Research India • Research Division, Bengaluru, Karnataka
+              </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="w-10 h-10 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors" title="Bookmark / Radar" type="button">
+<span class="material-symbols-outlined text-[20px]">radar</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors" title="Share Research Node" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+<!-- Primary Dossier Action Row -->
+<div class="flex flex-wrap items-center gap-3 mt-6 pt-4 border-t border-surface-container-low">
+<a class="h-10 px-5 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-headline-sm flex items-center gap-2 shadow-sm transition-colors" href="#">
+<span class="">Apply on Official Portal</span>
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+<button class="h-10 px-4 rounded-lg bg-surface-container-high hover:bg-surface-dim text-on-surface font-body-md flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">folder_special</span>
+<span class="">Prepare Full Application Package</span>
+</button>
+<button class="h-10 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-md flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+<span class="">Review &amp; Send Outreach Draft</span>
+</button>
+</div>
+</section>
+<!-- Dossier Section 2: Multi-Dimensional Match Matrix -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">analytics</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Multi-Dimensional Match &amp; Eligibility Audit</h3>
+</div>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded bg-surface-container text-on-surface font-mono">
+            Deterministic Engine v4.2
+          </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Metric 1 -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Academic Eligibility</span>
+<span class="font-label-sm text-label-sm font-bold text-on-primary-fixed-variant bg-primary-fixed px-2 py-0.5 rounded-full">100% MET</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Target requirement: Pre-final year Bachelor's or Master's. Candidate confirmed B.Tech CS graduation in 2027 (Pre-final year). CGPA 9.2 &gt; threshold 8.5.
+            </p>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 mt-3">
+<div class="bg-primary h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Skill Qualification</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface bg-surface-container-high px-2 py-0.5 rounded-full">88% MATCH</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Required: PyTorch, Vision Transformers, Python. Matched. Gap identified: <em>Low-latency inference profiling (TensorRT / CUDA C++)</em>.
+            </p>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 mt-3">
+<div class="bg-primary h-1.5 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Research Vector Alignment</span>
+<span class="font-label-sm text-label-sm font-bold text-on-secondary-fixed bg-secondary-fixed px-2 py-0.5 rounded-full">HIGH OVERLAP</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              ArXiv preprint 2501.0823 (Quantized ViTs) directly intersects Dr. Sunita Sarawagi &amp; Dr. Monojit Choudhury's active agenda on edge multimodal reasoning.
+            </p>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 mt-3">
+<div class="bg-tertiary h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Uncertainty Risk Index</span>
+<span class="font-label-sm text-label-sm font-bold text-on-primary-fixed-variant bg-primary-fixed px-2 py-0.5 rounded-full">0.04 (LOW RISK)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Direct primary portal confirmation. No contradictory secondary deadlines found. 100% cryptographic consensus across SerpApi &amp; careers.microsoft.com.
+            </p>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 mt-3">
+<div class="bg-primary h-1.5 rounded-full" style="width: 4%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dossier Section 3: Cryptographic Evidence & Source Provenance -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">verified_user</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Cryptographic Evidence &amp; Source Provenance</h3>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant font-mono">TLS 1.3 • SHA-256 Validated</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-3 font-body-sm text-body-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">link</span>
+<span class="font-mono text-on-surface truncate">https://careers.microsoft.com/v2/global/en/announcement/ai-research-fellows-india-blr-2026</span>
+</div>
+<span class="font-label-xs font-mono bg-surface-container px-2 py-0.5 rounded text-on-surface">HTTP 200 OK • 14:02:18 IST</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-lowest text-on-surface font-mono text-[12px] leading-relaxed border-l-2 border-primary">
+            “Candidates should be pursuing a Bachelor's, Master's or PhD degree in Computer Science, Electrical Engineering, or related technical field with demonstrated proficiency in deep learning frameworks (PyTorch or JAX). Demonstrated ability to conduct novel ML research via preprints or top-tier submissions is strongly preferred.”
+          </div>
+<!-- Multi-Agent Trace Bar -->
+<div class="pt-2 flex flex-col gap-1.5">
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Multi-Agent Processing Trail:</span>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
+<div class="p-2 rounded bg-surface-container-lowest">
+<span class="font-label-xs text-label-xs text-on-surface-variant block">1. Discovery</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">SerpApi Jobs</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest">
+<span class="font-label-xs text-label-xs text-on-surface-variant block">2. Investigator</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Scholar Crawl</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest">
+<span class="font-label-xs text-label-xs text-on-surface-variant block">3. Verifier</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Live Portal Ping</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest">
+<span class="font-label-xs text-label-xs text-on-surface-variant block">4. Match Audit</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Profile Diffing</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dossier Section 4: Tailored Application Preparation Package -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">assignment</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Tailored Application Preparation Package</h3>
+</div>
+<span class="font-label-xs text-label-xs bg-surface-container px-2 py-0.5 rounded text-on-surface">Automated Dossier Builder</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Resume Highlight Guidance -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">description</span>
+              Recommended Resume Restructuring
+            </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Place B.Tech Research Thesis <strong class="text-on-surface">“Edge-efficient Vision Transformers with 4-bit Quantization”</strong> as Top Entry in Experience / Publications section. Highlight 2.4x throughput gain on Jetson Orin to bridge the low-latency gap.
+            </p>
+</div>
+<!-- SOP Pitch Talking Points -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">lightbulb</span>
+              Statement of Purpose (SOP) Strategic Talking Points
+            </span>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1.5 list-disc pl-5">
+<li class=""><strong class="text-on-surface">Hook:</strong> Reference MSR India's recent work on SLM contextual pruning (EMNLP 2025).</li>
+<li class=""><strong class="text-on-surface">Core Argument:</strong> Show how candidate's ArXiv 2501.0823 benchmark validates inference reduction without loss in multilingual vision benchmarks.</li>
+<li class=""><strong class="text-on-surface">Mutual Roadmap:</strong> Propose extending token reduction into resource-constrained regional edge nodes.</li>
+</ul>
+</div>
+<!-- Dossier Checklist -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">B.Tech Transcript</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Validated (9.2 CGPA)</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">GitHub &amp; ArXiv Link</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Preprint 2501.0823</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px]">pending</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">2 Reference Letters</span>
+<span class="font-label-xs text-label-xs text-error">Pending Prof. Signoff</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dossier Section 5: Outreach Dossier & Approval-Gated Dispatch -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">mail_lock</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Approval-Gated Outreach Channel</h3>
+</div>
+<span class="font-label-xs text-label-xs px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-semibold uppercase">
+            Human-In-The-Loop Required
+          </span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-3">
+<!-- Decision Maker Bio Card -->
+<div class="flex items-center justify-between pb-3 border-b border-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center font-bold">
+                SS
+              </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Dr. Sunita Sarawagi</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Principal Researcher, Lead - Foundation Models @ MSR India</span>
+</div>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Confidence: 96% Hiring PI</span>
+</div>
+<!-- Email Draft Box -->
+<div class="flex flex-col gap-1.5 mt-1">
+<div class="font-mono text-label-sm text-on-surface-variant flex items-center justify-between">
+<span class="">Subject: B.Tech Researcher Inquiry — Efficient Multi-modal Reasoning / Summer Intern 2026</span>
+<button class="text-primary hover:underline text-label-xs flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-[14px]">edit</span> Edit
+              </button>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-lowest font-body-sm text-body-sm text-on-surface space-y-2 leading-relaxed">
+<p class="">Dear Dr. Sarawagi,</p>
+<p class="">
+                I have followed MSR India's contributions to multimodal token reduction with great interest. As a pre-final year CS student at IIT (CGPA 9.2), I recently open-sourced research on 4-bit quantized vision transformer heads (ArXiv: 2501.0823), reducing latency by 41% on edge accelerators.
+              </p>
+<p class="">
+                Given your team's ongoing initiative in multilingual small language models, I would welcome the opportunity to contribute as an AI Research Intern for the Summer 2026 cohort. My application dossier and preprint are attached below.
+              </p>
+<p class="">Respectfully,<br><strong class="font-headline-sm">Aarav Sharma</strong></p>
+</div>
+</div>
+<!-- Human Approval Dispatch Footer -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">security</span>
+<span class="">Requires explicit authorization. No email will be sent automatically.</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="h-9 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm transition-colors" type="button">
+                Regenerate Angle
+              </button>
+<button class="h-9 px-5 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-headline-sm flex items-center gap-1.5 shadow-sm transition-colors" id="approveDispatchBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="">Approve &amp; Open Dispatch Modal</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Dossier Section 6: Horizontal Agent Lifecycle Stepper -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-sm border border-outline-variant/20">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-xs text-label-xs uppercase tracking-wider text-on-surface-variant">Pipeline Lifecycle State</span>
+<span class="font-label-xs text-label-xs text-primary font-mono">STEP 6 OF 7: APPROVAL ACTIVE</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-7 gap-2 items-center text-center">
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px]">search</span>
+</div>
+<span class="font-label-xs text-[10px] text-on-surface font-medium leading-none">1. Discovered</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px]">data_object</span>
+</div>
+<span class="font-label-xs text-[10px] text-on-surface font-medium leading-none">2. Extracted</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+</div>
+<span class="font-label-xs text-[10px] text-on-surface font-medium leading-none">3. Evaluated</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+</div>
+<span class="font-label-xs text-[10px] text-on-surface font-medium leading-none">4. Structured</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+</div>
+<span class="font-label-xs text-[10px] text-on-surface font-medium leading-none">5. Tailored</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary ring-2 ring-primary-container flex items-center justify-center mb-1 animate-pulse">
+<span class="material-symbols-outlined text-[16px]">fingerprint</span>
+</div>
+<span class="font-label-xs text-[10px] text-primary font-bold leading-none">6. Approval Gate</span>
+</div>
+<div class="flex flex-col items-center opacity-40">
+<div class="w-7 h-7 rounded-full bg-surface-container text-on-surface flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-[16px]">send</span>
+</div>
+<span class="font-label-xs text-[10px] text-on-surface font-medium leading-none">7. Dispatched</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Modal for Gated Dispatch Confirmation -->
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm hidden items-center justify-center p-4" id="dispatchModal">
+<div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-6 shadow-xl flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-primary font-headline-md">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+<span class="">Explicit Outreach Authorization</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" id="closeModalBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+      You are about to authorize dispatch of the tailored pitch to <strong class="text-on-surface">Dr. Sunita Sarawagi</strong> (Microsoft Research India) via your connected authenticated Gmail session.
+    </p>
+<div class="p-3 rounded-lg bg-surface-container-low font-label-xs text-on-surface space-y-1">
+<div class="flex justify-between"><span class="">Sender:</span> <strong class="font-mono">aarav.sharma@research.edu</strong></div>
+<div class="flex justify-between"><span class="">Recipient:</span> <strong class="font-mono">sarawagi.sunita@microsoft.com</strong></div>
+<div class="flex justify-between"><span class="">Cryptographic Nonce:</span> <strong class="font-mono">AUTH-9082-A74B</strong></div>
+</div>
+<div class="flex items-center justify-end gap-3 pt-2">
+<button class="h-9 px-4 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm transition-colors" id="cancelModalBtn" type="button">
+        Cancel
+      </button>
+<button class="h-9 px-5 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-headline-sm flex items-center gap-1.5 transition-colors" id="confirmDispatchBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span class="">Confirm &amp; Send Draft</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+(function() {
+  // Standing/Walking Sprite Sheet: 1536 x 1024
+  const SHEET_W = 1536;
+  const SHEET_H = 1024;
+  const ROW_Y = [15, 125, 235, 345, 455, 565, 675, 785, 895];
+
+  const COL_X = {
+    front: 50,
+    back: 142,
+    left: 235,
+    right: 325,
+    walkRight: [425, 515, 605, 425],
+    walkLeft: [425, 515, 605, 425],
+    walkDown: [50, 830, 50, 920],
+    walkUp: [142, 1010, 142, 1100]
+  };
+
+  function applySprite(el, rowIdx, view, stepFrame = 0) {
+    if (!el) return;
+    const y = ROW_Y[rowIdx] !== undefined ? ROW_Y[rowIdx] : ROW_Y[0];
+    let x = COL_X.back;
+    let flip = false;
+
+    if (view === 'back') {
+      x = COL_X.back;
+    } else if (view === 'front') {
+      x = COL_X.front;
+    } else if (view === 'right') {
+      x = COL_X.right;
+    } else if (view === 'left') {
+      x = COL_X.right;
+      flip = true;
+    } else if (view === 'walkRight') {
+      const frames = COL_X.walkRight;
+      x = frames[stepFrame % frames.length];
+    } else if (view === 'walkLeft') {
+      const frames = COL_X.walkLeft;
+      x = frames[stepFrame % frames.length];
+      flip = true;
+    } else if (view === 'walkDown') {
+      const frames = COL_X.walkDown;
+      x = frames[stepFrame % frames.length];
+    } else if (view === 'walkUp') {
+      const frames = COL_X.walkUp;
+      x = frames[stepFrame % frames.length];
+    }
+
+    el.style.backgroundPosition = `-${x}px -${y}px`;
+    el.style.backgroundSize = `${SHEET_W}px ${SHEET_H}px`;
+    el.style.transform = flip ? 'scaleX(-1)' : 'scaleX(1)';
+  }
+
+  // OFFICIAL SPECIFICATION COORDINATES (1310x1200 scale):
+  const AGENTS = {
+    1: { name: 'Planner', row: 0, spawn: { x: 195, y: 721 }, desk: { x: 195, y: 642 } },
+    2: { name: 'Discovery', row: 1, spawn: { x: 495, y: 721 }, desk: { x: 495, y: 642 } },
+    3: { name: 'Investigator', row: 2, spawn: { x: 795, y: 721 }, desk: { x: 795, y: 642 } },
+    4: { name: 'Verifier', row: 3, spawn: { x: 1092, y: 721 }, desk: { x: 1092, y: 642 } },
+    5: { name: 'Match', row: 4, spawn: { x: 195, y: 965 }, desk: { x: 195, y: 884 } },
+    6: { name: 'Application', row: 5, spawn: { x: 495, y: 965 }, desk: { x: 495, y: 884 } },
+    7: { name: 'Outreach', row: 6, spawn: { x: 795, y: 965 }, desk: { x: 795, y: 884 } },
+    8: { name: 'Monitor', row: 7, spawn: { x: 1092, y: 965 }, desk: { x: 1092, y: 884 } },
+    manager: {
+      name: 'Manager',
+      row: 8,
+      stand: { x: 640, y: 326 },
+      desk: { x: 640, y: 274 },
+      door: { x: 867, y: 409 },
+      scannerApproach: { x: 245, y: 426 },
+      scanner: { x: 232, y: 321 }
+    }
+  };
+
+  // References
+  const searchInput = document.getElementById('search-input');
+  const btnSubmit = document.getElementById('btn-submit-task');
+  const btnSubmitLabel = document.getElementById('btn-submit-label');
+  const activeActor = document.getElementById('active-actor');
+  const actorSprite = document.getElementById('actor-sprite');
+  const actorDossier = document.getElementById('actor-dossier');
+  const bubble = document.getElementById('active-speech-bubble');
+  const bubbleName = document.getElementById('bubble-name');
+  const bubbleText = document.getElementById('bubble-text');
+  const handoffBadge = document.getElementById('handoff-badge');
+  const scannerLaserBar = document.getElementById('scanner-laser-bar');
+  const scannerLaserBed = document.getElementById('scanner-laser-bed');
+  const scannerDonePopup = document.getElementById('scanner-done-popup');
+  const officeView = document.getElementById('office-view-container');
+  const workspaceView = document.getElementById('workspace-view-container');
+  const seatedManagerEl = document.getElementById('seated-agent-manager');
+
+  // Permanent fast speed factor
+  const speedMultiplier = 2.0;
+  let isRunning = false;
+
+  // Presets
+  document.querySelectorAll('.quick-chip').forEach(c => {
+    c.addEventListener('click', () => { searchInput.value = c.dataset.task; });
+  });
+
+  function sleep(ms) {
+    return new Promise(resolve => {
+      const adjusted = ms / speedMultiplier;
+      setTimeout(resolve, adjusted);
+    });
+  }
+
+  function showBubble(x, y, name, text) {
+    bubbleName.innerText = name + ':';
+    bubbleText.innerText = text;
+    bubble.style.left = `${x}px`;
+    bubble.style.top = `${y - 68}px`;
+    bubble.classList.remove('hidden');
+  }
+
+  function hideBubble() {
+    bubble.classList.add('hidden');
+  }
+
+  function showHandoff(x, y) {
+    handoffBadge.style.left = `${x}px`;
+    handoffBadge.style.top = `${y - 68}px`;
+    handoffBadge.classList.remove('hidden');
+    setTimeout(() => handoffBadge.classList.add('hidden'), 800 / speedMultiplier);
+  }
+
+  // Exact Waypoint Interpolation Engine
+  async function walkPath(rowIdx, points) {
+    activeActor.classList.remove('hidden');
+    for (let i = 0; i < points.length - 1; i++) {
+      const p1 = points[i];
+      const p2 = points[i + 1];
+
+      const dx = p2.x - p1.x;
+      const dy = p2.y - p1.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist === 0) continue;
+
+      let view = 'walkRight';
+      if (Math.abs(dx) >= Math.abs(dy)) {
+        view = dx >= 0 ? 'walkRight' : 'walkLeft';
+      } else {
+        view = dy > 0 ? 'walkDown' : 'walkUp';
+      }
+
+      const speedPxPerStep = 6 * speedMultiplier;
+      const totalSteps = Math.max(1, Math.ceil(dist / speedPxPerStep));
+      const stepTime = 25 / speedMultiplier;
+
+      for (let s = 0; s <= totalSteps; s++) {
+        const curX = p1.x + (dx * (s / totalSteps));
+        const curY = p1.y + (dy * (s / totalSteps));
+        activeActor.style.left = `${curX}px`;
+        activeActor.style.top = `${curY}px`;
+        applySprite(actorSprite, rowIdx, view, Math.floor(s / 2));
+        await sleep(stepTime);
+      }
+    }
+  }
+
+  // Multi-Agent Pipeline
+  const PIPELINE = [
+    {
+      id: 1,
+      targetId: 2,
+      workingTexts: ["Analyzing research query...", "Formulating search matrix...", "✓ Search plan verified"],
+      handoffMsg: "Target directives verified",
+      path: [
+        { x: 195, y: 721 },
+        { x: 195, y: 756 },
+        { x: 495, y: 756 },
+        { x: 495, y: 721 }
+      ],
+      returnPath: [
+        { x: 495, y: 721 },
+        { x: 495, y: 756 },
+        { x: 195, y: 756 },
+        { x: 195, y: 721 }
+      ]
+    },
+    {
+      id: 2,
+      targetId: 3,
+      workingTexts: ["Querying 42 academic portals...", "Filtering IISc, IITs & MSR...", "✓ 8 Target listings found"],
+      handoffMsg: "Raw listings package",
+      path: [
+        { x: 495, y: 721 },
+        { x: 495, y: 756 },
+        { x: 795, y: 756 },
+        { x: 795, y: 721 }
+      ],
+      returnPath: [
+        { x: 795, y: 721 },
+        { x: 795, y: 756 },
+        { x: 495, y: 756 },
+        { x: 495, y: 721 }
+      ]
+    },
+    {
+      id: 3,
+      targetId: 4,
+      workingTexts: ["Deep researching lab credentials...", "Parsing PI publications...", "✓ Lab profiles completed"],
+      handoffMsg: "Lab & mentor profiles",
+      path: [
+        { x: 795, y: 721 },
+        { x: 795, y: 756 },
+        { x: 1092, y: 756 },
+        { x: 1092, y: 721 }
+      ],
+      returnPath: [
+        { x: 1092, y: 721 },
+        { x: 1092, y: 756 },
+        { x: 795, y: 756 },
+        { x: 795, y: 721 }
+      ]
+    },
+    {
+      id: 4,
+      targetId: 5,
+      workingTexts: ["Validating stipends & funding...", "Cross-checking deadlines...", "✓ Criteria verified"],
+      handoffMsg: "Verified opportunities dataset",
+      path: [
+        { x: 1092, y: 721 },
+        { x: 1160, y: 721 },
+        { x: 1160, y: 810 },
+        { x: 195, y: 810 },
+        { x: 195, y: 965 }
+      ],
+      returnPath: [
+        { x: 195, y: 965 },
+        { x: 195, y: 810 },
+        { x: 1160, y: 810 },
+        { x: 1160, y: 721 },
+        { x: 1092, y: 721 }
+      ]
+    },
+    {
+      id: 5,
+      targetId: 6,
+      workingTexts: ["Scoring student profile fit...", "Calculating 96% match...", "✓ Match matrix ranked"],
+      handoffMsg: "Scored candidate match",
+      path: [
+        { x: 195, y: 965 },
+        { x: 195, y: 1000 },
+        { x: 495, y: 1000 },
+        { x: 495, y: 965 }
+      ],
+      returnPath: [
+        { x: 495, y: 965 },
+        { x: 495, y: 1000 },
+        { x: 195, y: 1000 },
+        { x: 195, y: 965 }
+      ]
+    },
+    {
+      id: 6,
+      targetId: 7,
+      workingTexts: ["Structuring SOP & CV...", "Tailoring research proposals...", "✓ Application packets ready"],
+      handoffMsg: "Application dossier packages",
+      path: [
+        { x: 495, y: 965 },
+        { x: 495, y: 1000 },
+        { x: 795, y: 1000 },
+        { x: 795, y: 965 }
+      ],
+      returnPath: [
+        { x: 795, y: 965 },
+        { x: 795, y: 1000 },
+        { x: 495, y: 1000 },
+        { x: 495, y: 965 }
+      ]
+    },
+    {
+      id: 7,
+      targetId: 8,
+      workingTexts: ["Extracting faculty direct inboxes...", "Drafting formal outreach drafts...", "✓ Contacts authenticated"],
+      handoffMsg: "PI contacts & templates",
+      path: [
+        { x: 795, y: 965 },
+        { x: 795, y: 1000 },
+        { x: 1092, y: 1000 },
+        { x: 1092, y: 965 }
+      ],
+      returnPath: [
+        { x: 1092, y: 965 },
+        { x: 1092, y: 1000 },
+        { x: 795, y: 1000 },
+        { x: 795, y: 965 }
+      ]
+    },
+    {
+      id: 8,
+      targetId: 'manager',
+      workingTexts: ["Performing pipeline integrity audit...", "Binding Master Intelligence Brief...", "✓ Master dossier complete"],
+      handoffMsg: "Master Opportunity Dossier",
+      path: [
+        { x: 1092, y: 965 },
+        { x: 1165, y: 965 },
+        { x: 1165, y: 475 },
+        { x: 900, y: 475 },
+        { x: 900, y: 409 },
+        { x: 867, y: 409 },
+        { x: 867, y: 390 },
+        { x: 640, y: 390 },
+        { x: 640, y: 326 }
+      ],
+      returnPath: [
+        { x: 640, y: 326 },
+        { x: 640, y: 390 },
+        { x: 867, y: 390 },
+        { x: 867, y: 409 },
+        { x: 900, y: 409 },
+        { x: 900, y: 475 },
+        { x: 1165, y: 475 },
+        { x: 1165, y: 965 },
+        { x: 1092, y: 965 }
+      ]
+    }
+  ];
+
+  async function executeWorkflow() {
+    if (isRunning) return;
+    isRunning = true;
+    btnSubmit.disabled = true;
+    btnSubmitLabel.innerText = "Running...";
+    scannerDonePopup.classList.add('hidden');
+
+    // 1. Manager receives task while seated at executive desk
+    seatedManagerEl.classList.add('agent-typing');
+    showBubble(AGENTS.manager.desk.x, AGENTS.manager.desk.y, "Manager", "Task received: " + searchInput.value);
+    await sleep(900);
+    showBubble(AGENTS.manager.desk.x, AGENTS.manager.desk.y, "Manager", "Deploying pipeline directives to Planner...");
+    await sleep(700);
+    seatedManagerEl.classList.remove('agent-typing');
+    hideBubble();
+
+    // 2. Sequential Agent Execution
+    for (let stepIdx = 0; stepIdx < PIPELINE.length; stepIdx++) {
+      const step = PIPELINE[stepIdx];
+      const agent = AGENTS[step.id];
+      const seatedEl = document.getElementById(`seated-agent-${step.id}`);
+
+      // STATE: WORKING_SEATED
+      seatedEl.classList.add('agent-typing');
+      for (const txt of step.workingTexts) {
+        showBubble(agent.desk.x, agent.desk.y, agent.name, txt);
+        await sleep(800);
+      }
+      seatedEl.classList.remove('agent-typing');
+      hideBubble();
+
+      // STATE: DEPART / STAND UP
+      seatedEl.style.visibility = 'hidden';
+      activeActor.style.left = `${agent.spawn.x}px`;
+      activeActor.style.top = `${agent.spawn.y}px`;
+      applySprite(actorSprite, agent.row, 'back');
+      activeActor.classList.remove('hidden');
+      actorDossier.classList.remove('hidden');
+      await sleep(150);
+
+      // STATE: WALKING TO TARGET
+      await walkPath(agent.row, step.path);
+
+      // STATE: HANDOFF
+      const lastPoint = step.path[step.path.length - 1];
+      showHandoff(lastPoint.x, lastPoint.y);
+      showBubble(lastPoint.x, lastPoint.y, agent.name, `Handoff: ${step.handoffMsg}`);
+      await sleep(700);
+      hideBubble();
+
+      if (step.targetId === 'manager') {
+        seatedManagerEl.classList.add('agent-typing');
+        showBubble(AGENTS.manager.desk.x, AGENTS.manager.desk.y, "Manager", "Dossier received! Authenticating records...");
+        await sleep(800);
+        seatedManagerEl.classList.remove('agent-typing');
+        hideBubble();
+      }
+
+      // STATE: RETURN WALK
+      actorDossier.classList.add('hidden');
+      await walkPath(agent.row, step.returnPath);
+
+      // STATE: SIT DOWN
+      activeActor.classList.add('hidden');
+      seatedEl.style.visibility = 'visible';
+      await sleep(200);
+    }
+
+    // 3. MANAGER WALKS TO SCANNER
+    seatedManagerEl.style.visibility = 'hidden';
+    activeActor.style.left = `${AGENTS.manager.stand.x}px`;
+    activeActor.style.top = `${AGENTS.manager.stand.y}px`;
+    applySprite(actorSprite, AGENTS.manager.row, 'front');
+    activeActor.classList.remove('hidden');
+    actorDossier.classList.remove('hidden');
+    await sleep(200);
+
+    const managerToScanner = [
+      { x: 640, y: 326 },
+      { x: 867, y: 326 },
+      { x: 867, y: 409 },
+      { x: 900, y: 409 },
+      { x: 900, y: 455 },
+      { x: 245, y: 455 },
+      { x: 245, y: 426 },
+      { x: 232, y: 321 }
+    ];
+
+    await walkPath(AGENTS.manager.row, managerToScanner);
+
+    // Manager scans dossier
+    actorDossier.classList.add('hidden');
+    showBubble(232, 321, "Manager", "Digitizing & certifying opportunities...");
+    scannerLaserBar.classList.remove('hidden');
+    scannerLaserBed.classList.remove('hidden');
+    await sleep(1500);
+
+    scannerLaserBar.classList.add('hidden');
+    scannerLaserBed.classList.add('hidden');
+    showBubble(232, 321, "Manager", "✓ 8 Opportunities Certified!");
+    await sleep(750);
+    hideBubble();
+
+    // Manager walks back to executive office
+    const scannerToManager = [...managerToScanner].reverse();
+    await walkPath(AGENTS.manager.row, scannerToManager);
+
+    // Manager sits down back into executive chair
+    activeActor.classList.add('hidden');
+    seatedManagerEl.style.visibility = 'visible';
+
+    btnSubmit.disabled = false;
+    btnSubmitLabel.innerText = "Send Task";
+    isRunning = false;
+
+    // Automatic Transition to Mode B (Verified Opportunities Workspace)
+    await sleep(400);
+    showWorkspace();
+  }
+
+  // Views Toggle
+  function showWorkspace() {
+    officeView.classList.add('hidden');
+    workspaceView.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showOffice() {
+    workspaceView.classList.add('hidden');
+    officeView.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  btnSubmit?.addEventListener('click', executeWorkflow);
+  searchInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') executeWorkflow();
+  });
+
+  document.getElementById('btn-view-results')?.addEventListener('click', showWorkspace);
+  document.getElementById('btn-back-to-office')?.addEventListener('click', showOffice);
+  document.getElementById('btn-subnav-office')?.addEventListener('click', showOffice);
+
+  document.getElementById('scanner-unit')?.addEventListener('click', () => {
+    scannerDonePopup.classList.toggle('hidden');
+  });
+
+  // Modal interactions
+  const approveBtn = document.getElementById('approveDispatchBtn');
+  const modal = document.getElementById('dispatchModal');
+  const closeBtn = document.getElementById('closeModalBtn');
+  const cancelBtn = document.getElementById('cancelModalBtn');
+  const confirmBtn = document.getElementById('confirmDispatchBtn');
+
+  if (approveBtn && modal) {
+    approveBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    });
+
+    const hideModal = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+
+    if (closeBtn) closeBtn.addEventListener('click', hideModal);
+    if (cancelBtn) cancelBtn.addEventListener('click', hideModal);
+
+    if (confirmBtn) {
+      confirmBtn.addEventListener('click', () => {
+        confirmBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span> <span>Dispatching...</span>';
+        setTimeout(() => {
+          hideModal();
+          confirmBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">send</span> <span>Confirm & Send Draft</span>';
+          approveBtn.classList.remove('bg-primary');
+          approveBtn.classList.add('bg-emerald-700');
+          approveBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> <span>Dispatched to Gmail Outbox</span>';
+        }, 1000);
+      });
+    }
+  }
+
+})();
+</script>
+
+
+<div id="snapdom-sandbox" data-snapdom-sandbox="true" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 0px; height: 0px; overflow: hidden;"></div></body></html>
